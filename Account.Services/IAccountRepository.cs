@@ -9,8 +9,7 @@ namespace Account.Services
     public interface IAccountRepository
     {
         Task<bool> IsEmailExistsAsync(string email);
-        Task<bool> CreateAccountAsync(string email);
-        Task <int> CreateCustomerAsync(Customer customer);
+        Task<int> CreateAccountAsync(Customer customer);
         Task<Customer> GetCustomerAsync(string email, string password);
         Task<Models.Account> GetAccountAsync(Guid accountId);
         Task<Guid> GetAccountIdByCustomerIdAsync(Guid customerId);

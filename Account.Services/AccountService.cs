@@ -10,22 +10,22 @@ namespace Account.Services
     {
         private readonly IAccountRepository _accountRepository;
 
-        public AccountService(IAccountRepository accountRepository )
+        public AccountService(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
         }
         public async Task<bool> CreateAsync(Customer customer)
         {
-                var isExsits = _accountRepository.IsEmailExistsAsync(customer.Email);
-                if (isExsits.Result == false)
+            var isExsits = _accountRepository.IsEmailExistsAsync(customer.Email);
+            if (isExsits.Result == false)
+            {
+                var CreateAccountSucceded = await _accountRepository.CreateAccountAsync(customer);
+                if (CreateAccountSucceded != -1)
                 {
-                    var CreateAccountSucceded = await _accountRepository.CreateCustomerAsync(customer);
-                    if (CreateAccountSucceded !=-1)
-                    {
-                        return await _accountRepository.CreateAccountAsync(customer.Email);
-                    }
+                    return true;
                 }
-                return false;
+            }
+            return false;
         }
 
         public async Task<Models.Account> GetAccountAsync(Guid accountId)
@@ -38,7 +38,7 @@ namespace Account.Services
             Customer customer = await _accountRepository.GetCustomerAsync(email, password);
             if (customer != null)
             {
-                 return await _accountRepository.GetAccountByCustomerIdAsync(customer.Id);
+                return await _accountRepository.GetAccountIdByCustomerIdAsync(customer.Id);
             }
             return Guid.Empty;
         }

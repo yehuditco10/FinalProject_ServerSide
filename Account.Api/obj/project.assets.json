@@ -8696,11 +8696,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Api\\Account.Api.csproj",
+      "projectUniqueName": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Api\\Account.Api.csproj",
       "projectName": "Account.Api",
-      "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Api\\Account.Api.csproj",
+      "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Api\\Account.Api.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Api\\obj\\",
+      "outputPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8716,11 +8716,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Data\\Account.Data.csproj": {
-              "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Data\\Account.Data.csproj"
+            "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Data\\Account.Data.csproj": {
+              "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Data\\Account.Data.csproj"
             },
-            "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Services\\Account.Services.csproj": {
-              "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Services\\Account.Services.csproj"
+            "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj": {
+              "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj"
             }
           }
         }

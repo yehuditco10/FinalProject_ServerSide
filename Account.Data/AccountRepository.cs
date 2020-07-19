@@ -21,48 +21,30 @@ namespace Account.Data
             _mapper = mapper;
         }
 
-        public async Task<bool> CreateAccountAsync(string email)
+        public async Task<int> CreateAccountAsync(Services.Models.Customer customerModel)
         {
             try
             {
-                var customer = await _accountContext.Customers.FirstOrDefaultAsync(c => c.Email == email);
-                if (customer != null)
+                Entities.Customer newCustomer = _mapper.Map<Entities.Customer>(customerModel);
+                Guid custId = Guid.NewGuid();
+                newCustomer.Id = custId;
+                await _accountContext.Customers.AddAsync(newCustomer);
+                var account = new Entities.Account()
                 {
-                    var account = new Entities.Account()
-                    {
-                        Id = Guid.NewGuid(),
-                        CustomerId = customer.Id,
-                        Opendate = DateTime.Today,
-                        Balance = 1000
-                    };
-                    await _accountContext.Accounts.AddAsync(account);
-                    var createSucceeded = await _accountContext.SaveChangesAsync();
-                    return createSucceeded != -1 ? true : false;
-                }
-                return false;
+                    Id = Guid.NewGuid(),
+                    CustomerId = custId,
+                    Opendate = DateTime.Today,
+                    Balance = 1000
+                };
+                await _accountContext.Accounts.AddAsync(account);
+                return await _accountContext.SaveChangesAsync();
+
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message + " create account failed");
             }
         }
-
-        public async Task<int> CreateCustomerAsync(Services.Models.Customer customer)
-        {
-            try
-            {
-                Entities.Customer newCustomer = _mapper.Map<Entities.Customer>(customer);
-                await _accountContext.Customers.AddAsync(newCustomer);
-                return await _accountContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-
-
-        }
-
         public async Task<bool> IsEmailExistsAsync(string email)
         {
             Entities.Customer customer = await _accountContext.Customers.FirstOrDefaultAsync(
@@ -106,7 +88,7 @@ namespace Account.Data
             catch (Exception e)
             {
 
-                throw new Exception(e.Message+" get account failed");
+                throw new Exception(e.Message + " get account failed");
             }
             throw new NotImplementedException();
         }

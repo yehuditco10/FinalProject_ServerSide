@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Services\\Account.Services.csproj",
+      "projectUniqueName": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
       "projectName": "Account.Services",
-      "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Services\\Account.Services.csproj",
+      "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject\\Account.Services\\obj\\",
+      "outputPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
