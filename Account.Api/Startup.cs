@@ -73,13 +73,14 @@ namespace Account.Api
             }
 
             app.UseRouting();
+            app.UseCors("MyPolicy");
             app.UseMiddleware(typeof(ErrorHandlerMiddleware));
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            app.UseCors("MyPolicy");
+           
             app.UseSwagger();
             app.UseSwaggerUI(setupAction =>
             {
