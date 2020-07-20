@@ -10,7 +10,7 @@ namespace Account.Services
     {
         Task<bool> IsEmailExistsAsync(string email);
         Task<int> CreateAccountAsync(Customer customer);
-        Task<Customer> GetCustomerAsync(string email, string password);
+        Task<Customer> GetCustomerAsync(string email);
         Task<Models.Account> GetAccountAsync(Guid accountId);
         Task<Guid> GetAccountIdByCustomerIdAsync(Guid customerId);
     }

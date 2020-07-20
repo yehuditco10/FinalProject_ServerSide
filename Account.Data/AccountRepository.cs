@@ -55,14 +55,15 @@ namespace Account.Data
             }
             return true;
         }
-        public async Task<Services.Models.Customer> GetCustomerAsync(string email, string password)
+        public async Task<Services.Models.Customer> GetCustomerAsync(string email)
         {
             try
             {
+
                 Entities.Customer customer = await _accountContext.Customers
-                  .FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
+                  .FirstOrDefaultAsync(c => c.Email == email);
                 if (customer == null)
-                    throw new AccountNotFoundException("Your email or password is not valid");
+                    throw new AccountNotFoundException("Your email is not valid");
                 return _mapper.Map<Services.Models.Customer>(customer);
             }
             catch (Exception e)

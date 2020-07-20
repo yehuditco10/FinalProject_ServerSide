@@ -4,18 +4,18 @@ using System.Text;
 
 namespace Account.Services.Exceptions
 {
-    public class AccountNotFoundException:Exception
+    public class LoginFailedException:Exception
     {
-        public AccountNotFoundException()
+        public LoginFailedException()
         {
         }
 
-        public AccountNotFoundException(string message)
+        public LoginFailedException(string message)
             : base(message)
         {
         }
 
-        public AccountNotFoundException(string message, Exception inner)
+        public LoginFailedException(string message, Exception inner)
             : base(message, inner)
         {
         }

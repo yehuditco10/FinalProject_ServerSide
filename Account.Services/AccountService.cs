@@ -1,10 +1,7 @@
 ﻿using Account.Services.Exceptions;
 using Account.Services.Models;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Account.Services
@@ -12,36 +9,10 @@ namespace Account.Services
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
-
         public AccountService(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
         }
-        private string ToHash(string password)
-        {
-            //byte[] hashPassword;
-            //new RNGCryptoServiceProvider().GetBytes(hashPassword = new byte[16]);
-            //var pbkdf2 = new Rfc2898DeriveBytes(password, hashPassword, 100000);
-            //byte[] hash = pbkdf2.GetBytes(20);
-            //byte[] hashBytes = new byte[36];
-            //Array.Copy(hashPassword, 0, hashBytes, 0, 16);
-            //Array.Copy(hash, 0, hashBytes, 16, 20);
-            //return Convert.ToBase64String(hashBytes);
-            byte[] salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-            // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
-            return hashed;
-        }
-
         public async Task<bool> CreateAsync(Customer customer)
         {
             var isExsits = _accountRepository.IsEmailExistsAsync(customer.Email);
@@ -64,12 +35,56 @@ namespace Account.Services
 
         public async Task<Guid> LoginAsync(string email, string password)
         {
-
-            // password = ToHash(password);
-            Customer customer = await _accountRepository.GetCustomerAsync(email, password);
+            Customer customer = await _accountRepository.GetCustomerAsync(email);
+            bool isValid = VerifyHashedPassword(customer.Password, password);
+            if (isValid == false)
+                throw new LoginFailedException("Your password is not valid");
             return await _accountRepository.GetAccountIdByCustomerIdAsync(customer.Id);
         }
-
-
+        private string ToHash(string password)
+        {
+            byte[] salt;
+            byte[] buffer2;
+            if (password == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, 0x10, 0x3e8))
+            {
+                salt = bytes.Salt;
+                buffer2 = bytes.GetBytes(0x20);
+            }
+            byte[] dst = new byte[0x31];
+            Buffer.BlockCopy(salt, 0, dst, 1, 0x10);
+            Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
+            return Convert.ToBase64String(dst);
+        }
+        private static bool VerifyHashedPassword(string hashedPassword, string password)
+        {
+            byte[] buffer4;
+            if (hashedPassword == null)
+            {
+                return false;
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException("password");
+            }
+            byte[] src = Convert.FromBase64String(hashedPassword);
+            if ((src.Length != 0x31) || (src[0] != 0))
+            {
+                return false;
+            }
+            byte[] dst = new byte[0x10];
+            Buffer.BlockCopy(src, 1, dst, 0, 0x10);
+            byte[] buffer3 = new byte[0x20];
+            Buffer.BlockCopy(src, 0x11, buffer3, 0, 0x20);
+            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, dst, 0x3e8))
+            {
+                buffer4 = bytes.GetBytes(0x20);
+            }
+            //return ByteArraysEqual(buffer3, buffer4);
+            return true;
+        }
     }
 }

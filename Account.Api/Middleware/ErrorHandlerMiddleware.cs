@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using Account.Data.Exceptions;
+using Account.Services.Exceptions;
 
 namespace Account.Api.Middleware
 {
@@ -31,20 +32,13 @@ namespace Account.Api.Middleware
             HttpStatusCode code = HttpStatusCode.BadRequest;
             string result = JsonConvert.SerializeObject(new { error = ex.Message });
 
-            if (context.Response.StatusCode == StatusCodes.Status401Unauthorized)
-            {
+            if (ex is LoginFailedException)
                 code = HttpStatusCode.Unauthorized;
-                result = JsonConvert.SerializeObject(new { error = "you aren't allowed" });
-            }
-            if (ex is CreateAccountFailed)
+            else if (ex is CreateAccountFailed)
                 code = HttpStatusCode.InternalServerError;
             else if (ex is AccountNotFoundException)
                 code = HttpStatusCode.NotFound;
-            
-               
-            //else if (ex is MyUnauthorizedException) code = HttpStatusCode.Unauthorized;
-            //else if (ex is MyException) code = HttpStatusCode.BadRequest;            
-            // context.Response.ContentType = "application/json";
+
             context.Response.StatusCode = (int)code;
             return context.Response.WriteAsync(result);
         }
