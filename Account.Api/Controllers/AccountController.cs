@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Account.Api.DTO;
 using Account.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace Account.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("MyPolicy")]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -29,7 +31,7 @@ namespace Account.Api.Controllers
             return await _accountService.CreateAsync(customer);
         }
         [HttpGet]
-        public async Task<IActionResult> LoginAsync(Login loginCustomer)
+        public async Task<IActionResult> LoginAsync([FromQuery]Login loginCustomer)
         {
             Guid accountId = await _accountService.LoginAsync(loginCustomer.Email, loginCustomer.Password);
             if (accountId != Guid.Empty)

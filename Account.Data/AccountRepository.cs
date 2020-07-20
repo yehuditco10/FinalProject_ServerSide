@@ -1,4 +1,5 @@
 ﻿using Account.Data.Entities;
+using Account.Data.Exceptions;
 using Account.Services;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -38,11 +39,10 @@ namespace Account.Data
                 };
                 await _accountContext.Accounts.AddAsync(account);
                 return await _accountContext.SaveChangesAsync();
-
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message + " create account failed");
+                throw new CreateAccountFailed($"Account creation for { customerModel.Email } failed");
             }
         }
         public async Task<bool> IsEmailExistsAsync(string email)
@@ -60,16 +60,15 @@ namespace Account.Data
             try
             {
                 Entities.Customer customer = await _accountContext.Customers
-              .FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
-                if (customer != null)
-                    return _mapper.Map<Services.Models.Customer>(customer);
-                return null;
+                  .FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
+                if (customer == null)
+                    throw new AccountNotFoundException("Your email or password is not valid");
+                return _mapper.Map<Services.Models.Customer>(customer);
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw new AccountNotFoundException(e.Message);
             }
-
         }
 
         public async Task<Services.Models.Account> GetAccountAsync(Guid accountId)
@@ -83,14 +82,12 @@ namespace Account.Data
                 {
                     return _mapper.Map<Services.Models.Account>(account);
                 }
-                return null;
+                throw new AccountNotFoundException($"There is no account with id {accountId}");
             }
             catch (Exception e)
             {
-
-                throw new Exception(e.Message + " get account failed");
+                throw new AccountNotFoundException(e.Message);
             }
-            throw new NotImplementedException();
         }
 
         public async Task<Guid> GetAccountIdByCustomerIdAsync(Guid customerId)
@@ -103,13 +100,12 @@ namespace Account.Data
                 {
                     return account.Id;
                 }
-                return Guid.Empty;
+                throw new AccountNotFoundException($"There is no account for customer {customerId}");
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                throw new AccountNotFoundException(e.Message);
             }
-            throw new NotImplementedException();
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Account.Api.Middleware;
 using Account.Data;
 using Account.Services;
 using AutoMapper;
@@ -39,6 +40,12 @@ namespace Account.Api
             });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("AccountOpenApiSpecification",
@@ -66,11 +73,13 @@ namespace Account.Api
             }
 
             app.UseRouting();
+            app.UseMiddleware(typeof(ErrorHandlerMiddleware));
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            app.UseCors("MyPolicy");
             app.UseSwagger();
             app.UseSwaggerUI(setupAction =>
             {
