@@ -24,22 +24,7 @@ namespace Account.Api.Controllers
             _accountService = accountService;
             _mapper = mapper;
         }
-        [HttpPost]
-        public async Task<ActionResult<bool>> CreateAccountAsync(Customer customerDTO)
-        {
-            var customer = _mapper.Map<Services.Models.Customer>(customerDTO);
-            return await _accountService.CreateAsync(customer);
-        }
-        [HttpGet]
-        public async Task<IActionResult> LoginAsync([FromQuery]Login loginCustomer)
-        {
-            Guid accountId = await _accountService.LoginAsync(loginCustomer.Email, loginCustomer.Password);
-            if (accountId != Guid.Empty)
-            {
-                return Ok(accountId);
-            }
-            return Unauthorized();
-        }
+
 
         [HttpGet("info")]
         public async Task<IActionResult> GetInfoAsync(Guid accountId)
