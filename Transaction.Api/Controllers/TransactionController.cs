@@ -21,7 +21,8 @@ namespace Transaction.Api.Controllers
         [HttpPost]
         public ActionResult DoTransaction(DTO.Transaction transaction)
         {
-            return _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction);
+           var res = _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
+            return Ok(res.Result);
         }
     }
 }
