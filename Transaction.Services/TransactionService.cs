@@ -34,7 +34,7 @@ namespace Transaction.Services
                 FromAccountId = transaction.FromAccountId,
                 ToAccountId = transaction.ToAccountId,
                 Amount = transaction.Amount,
-                Id = transaction.Id
+                TransactionId = transaction.Id
             };
              _messageSession.Send(doTransaction).ConfigureAwait(false);
         }

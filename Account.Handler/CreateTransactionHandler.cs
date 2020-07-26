@@ -18,21 +18,44 @@ namespace Account.Handler
         }
         public async Task Handle(CreateTransaction message, IMessageHandlerContext context)
         {
-            //	Check correctness of accounts ids
-            // bool idsCorrectness= await 
-
-            //	Check sender balance
-            //bool idHasBalance=
-            //	Update receiver/sender balances (run in DB transaction)
-
-            //	Send result NSB event
             TransactionCreated transactionCreated = new TransactionCreated()
             {
-                TransactionId = message.Id,
-                //todo
-                IsSucceeded = true,
-                FailureReason = "..."
+                TransactionId = message.TransactionId
             };
+            //	Check correctness of accounts ids
+            bool idsCorrectness = await _accountService.idsCorrectness(message.FromAccountId, message.ToAccountId);
+            if (idsCorrectness == false)
+            {
+                transactionCreated.IsSucceeded = false;
+                transactionCreated.FailureReason = "The accounts are invalid";
+            }
+            else
+            {
+                //	Check sender balance
+                bool HasBalance = await _accountService.HasBalance(message.FromAccountId, message.Amount);
+                if (HasBalance == false)
+                {
+                    transactionCreated.IsSucceeded = false;
+                    transactionCreated.FailureReason = "There is not enough balance";
+                }
+                else
+                {
+                    //	Update receiver/sender balances (run in DB transaction)
+                    bool isSucceeded = await _accountService.DoTransaction(
+                        message.FromAccountId,
+                        message.ToAccountId, message.Amount);
+                    if (isSucceeded == false)
+                    {
+                        transactionCreated.IsSucceeded = false;
+                        transactionCreated.FailureReason = "The transaction failed, even though it was valid ";
+                    }
+                    else
+                    {
+                        transactionCreated.IsSucceeded = true;
+                    }
+                }
+            }
+            //	Send result NSB event
             await context.Publish(transactionCreated);
         }
     }
