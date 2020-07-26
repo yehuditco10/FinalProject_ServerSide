@@ -2678,6 +2678,9 @@
       "Messages/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "NServiceBus": "7.3.0"
+        },
         "compile": {
           "bin/placeholder/Messages.dll": {}
         },
@@ -8873,19 +8876,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bhartman\\.nuget\\packages\\": {}
+    "C:\\Users\\user1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Transaction.Api\\Transaction.Api.csproj",
+      "projectUniqueName": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Transaction.Api\\Transaction.Api.csproj",
       "projectName": "Transaction.Api",
-      "projectPath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Transaction.Api\\Transaction.Api.csproj",
-      "packagesPath": "C:\\Users\\bhartman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Transaction.Api\\obj\\",
+      "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Transaction.Api\\Transaction.Api.csproj",
+      "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Transaction.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bhartman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8898,8 +8901,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Transaction.Data\\Transaction.Data.csproj": {
-              "projectPath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Transaction.Data\\Transaction.Data.csproj"
+            "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Transaction.Data\\Transaction.Data.csproj": {
+              "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Transaction.Data\\Transaction.Data.csproj"
             }
           }
         }
@@ -8950,7 +8953,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

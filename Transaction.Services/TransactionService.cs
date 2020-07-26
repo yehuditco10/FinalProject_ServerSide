@@ -29,7 +29,7 @@ namespace Transaction.Services
         }
         private void SendDoTransactionMessage(Models.Transaction transaction)
         {
-            Messages.Commands.DoTransaction doTransaction = new Messages.Commands.DoTransaction()
+            Messages.Commands.CreateTransaction doTransaction = new Messages.Commands.CreateTransaction()
             {
                 FromAccountId = transaction.FromAccountId,
                 ToAccountId = transaction.ToAccountId,

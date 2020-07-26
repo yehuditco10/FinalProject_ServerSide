@@ -2,7 +2,7 @@
 
 namespace Messages.Commands
 {
-    public  class DoTransaction
+    public  class CreateTransaction
     {
         public Guid Id { get; set; }
         public Guid FromAccountId { get; set; }
