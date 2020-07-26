@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Account.Services
+namespace Account.Services.Interfaces
 {
     public interface IAccountRepository
     {
