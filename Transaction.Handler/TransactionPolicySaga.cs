@@ -25,7 +25,7 @@ namespace Transaction.Handler
         protected override void ConfigureHowToFindSaga(SagaPropertyMapper<TransactionPolicyData> mapper)
         {
             mapper.ConfigureMapping<CreateTransaction>(message => message.TransactionId)
-                                   .ToSaga(sagaData => sagaData.Id);
+                                   .ToSaga(sagaData => sagaData.TransactionId);
         }
     }
 }

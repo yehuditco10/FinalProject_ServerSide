@@ -29,15 +29,6 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "DataAnnotationsExtensions/5.0.1.27": {
-        "type": "package",
-        "compile": {
-          "lib/NETFramework40/DataAnnotationsExtensions.dll": {}
-        },
-        "runtime": {
-          "lib/NETFramework40/DataAnnotationsExtensions.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.6": {
         "type": "package",
         "compile": {
@@ -1513,7 +1504,6 @@
           "Account.Services": "1.0.0",
           "AutoMapper": "10.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
-          "DataAnnotationsExtensions": "5.0.1.27",
           "Microsoft.EntityFrameworkCore": "3.1.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.6",
           "System.Configuration.ConfigurationManager": "4.7.0"
@@ -1582,18 +1572,6 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
-      ]
-    },
-    "DataAnnotationsExtensions/5.0.1.27": {
-      "sha512": "lw4n4XzY62raAOrrlPdkh4h3PXenReARIazAPzs8AvlkKDAK9pe7kcUL3dh3T095/Q9+LezoXCfjEgDPslmGyg==",
-      "type": "package",
-      "path": "dataannotationsextensions/5.0.1.27",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dataannotationsextensions.5.0.1.27.nupkg.sha512",
-        "dataannotationsextensions.nuspec",
-        "lib/NETFramework40/DataAnnotationsExtensions.dll"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.6": {
@@ -5923,17 +5901,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'DataAnnotationsExtensions 5.0.1.27' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "DataAnnotationsExtensions",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }

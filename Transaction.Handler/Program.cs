@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using AutoMapper.Configuration;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NServiceBus;
 using System;
@@ -8,8 +7,6 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Transaction.Api;
-using Transaction.Data;
-using Transaction.Services;
 
 namespace Transaction.Handler
 {
@@ -17,8 +14,6 @@ namespace Transaction.Handler
     {
      
         private readonly IConfiguration configuration;
-
-        //public IConfiguration _Configuration { get; }
         public Program(IConfiguration configuration)
         {
             this.configuration = configuration;
@@ -57,10 +52,10 @@ namespace Transaction.Handler
             conventions.DefiningEventsAs(type => type.Namespace == "Messages.Events");
 
             var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
-            containerSettings.ServiceCollection.AddSingleton<ITransactionService, TransactionService>();
-            containerSettings.ServiceCollection.AddScoped<ITransactionRepository, TransactionRepository>();
-            containerSettings.ServiceCollection.AddDbContext<TransactionContext>(options =>
-                        options.UseSqlServer(connection));
+            //containerSettings.ServiceCollection.AddSingleton<ITransactionService, TransactionService>();
+            //containerSettings.ServiceCollection.AddScoped<ITransactionRepository, TransactionRepository>();
+            //containerSettings.ServiceCollection.AddDbContext<TransactionContext>(options =>
+            //            options.UseSqlServer(connection));
 
             var mappingConfig = new MapperConfiguration(mc =>
             {

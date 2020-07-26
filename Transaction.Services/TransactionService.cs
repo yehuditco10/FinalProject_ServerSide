@@ -17,7 +17,7 @@ namespace Transaction.Services
         }
         public async Task<bool> DoTransactionAsync(Models.Transaction transaction)
         {
-            transaction.Id = new Guid();
+            transaction.Id = Guid.NewGuid();
             await AddTransactionToDB(transaction);
             SendDoTransactionMessage(transaction);
             return true;

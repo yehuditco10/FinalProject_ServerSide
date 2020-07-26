@@ -1,9 +1,6 @@
 ﻿using Messages.Commands;
 using Messages.Events;
 using NServiceBus;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Account.Handler
@@ -56,6 +53,13 @@ namespace Account.Handler
                 }
             }
             //	Send result NSB event
+            TransactionCreated transactionCreated = new TransactionCreated()
+            {
+                TransactionId = message.TransactionId,
+                //todo
+                IsSucceeded = true,
+                FailureReason = "..."
+            };
             await context.Publish(transactionCreated);
         }
     }
