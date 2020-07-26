@@ -138,5 +138,10 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Trans
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\NServiceBus.Core.dll
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\NServiceBus.Transport.RabbitMQ.dll
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\NServiceBus.Extensions.DependencyInjection.dll
