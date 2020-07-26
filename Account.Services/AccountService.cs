@@ -1,5 +1,7 @@
 ﻿using Account.Services.Exceptions;
 using Account.Services.Models;
+using Messages.Events;
+using NServiceBus;
 using System;
 using System.Threading.Tasks;
 
@@ -8,12 +10,14 @@ namespace Account.Services
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
-     
-        public AccountService(IAccountRepository accountRepository
+        private readonly IMessageSession _messageSession;
+
+        public AccountService(IAccountRepository accountRepository,
+            IMessageSession messageSession
            )
         {
             _accountRepository = accountRepository;
-          
+            _messageSession = messageSession;
         }
         public async Task<bool> CreateAsync(Customer customer)
         {
@@ -29,6 +33,43 @@ namespace Account.Services
             }
             return false;
         }
+
+        public async Task CreateTransaction(Transaction transaction)
+        {
+            TransactionCorrectness transactionCorrectness = await AccountIdsCorrectness(transaction.FromAccountId, transaction.ToAccountId);
+            if (transactionCorrectness.IsValid == true)
+            {
+                transactionCorrectness = await HasBalance(transaction.FromAccountId, transaction.Amount);
+                if (transactionCorrectness.IsValid == true)
+                {
+                    bool isSucceeded = await DoTransaction(transaction);
+                }
+            }
+            TransactionCreated transactionCreated = new TransactionCreated()
+            {
+                TransactionId = transaction.TransactionId,
+                IsSucceeded=transactionCorrectness.IsValid,
+                FailureReason =transactionCorrectness.Reason
+            };
+            await _messageSession.Publish(transactionCreated);
+        }
+
+        private Task<TransactionCorrectness> AccountIdsCorrectness(Guid fromAccountId, Guid toAccountId)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Task<TransactionCorrectness> HasBalance(Guid fromAccountId, int amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Task<bool> DoTransaction(Transaction transaction)
+        {
+            throw new NotImplementedException();
+        }
+
+       
         public int GenerateRandomNo(int min, int max)
         {
             Random _rdm = new Random();
