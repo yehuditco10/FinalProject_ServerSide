@@ -26,6 +26,7 @@ namespace Account.Api
                    Configuration.GetConnectionString("AccountConnection")));
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -40,7 +41,7 @@ namespace Account.Api
             }));
             services.AddSwaggerGen(setupAction =>
             {
-                setupAction.SwaggerDoc("AccountOpenApiSpecification",
+                setupAction.SwaggerDoc("AccountApiSpecification",
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
                         Title = "FinalProject - Account",
@@ -71,8 +72,8 @@ namespace Account.Api
             app.UseSwaggerUI(setupAction =>
             {
                 setupAction.SwaggerEndpoint(
-                    "/swagger/AccountOpenApiSpecification/swagger.json",
-                    "WeightWatchers");
+                    "/swagger/AccountApiSpecification/swagger.json",
+                    "FinalProject - Account");
                 setupAction.RoutePrefix = "";
             });
         }

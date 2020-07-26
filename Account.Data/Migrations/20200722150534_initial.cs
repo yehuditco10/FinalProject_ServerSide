@@ -15,11 +15,28 @@ namespace Account.Data.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: false)
+                    PasswordHash = table.Column<string>(nullable: true),
+                    PasswordSalt = table.Column<string>(nullable: true),
+                    Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customer", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmailVerificationS",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(nullable: true),
+                    VerificationCode = table.Column<int>(nullable: false),
+                    ExpirationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmailVerificationS", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,7 +46,7 @@ namespace Account.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     CustomerId = table.Column<Guid>(nullable: false),
                     Opendate = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    Balance = table.Column<float>(nullable: false, defaultValue: 1000f)
+                    Balance = table.Column<int>(nullable: false, defaultValue: 1000)
                 },
                 constraints: table =>
                 {
@@ -53,12 +70,22 @@ namespace Account.Data.Migrations
                 column: "Email",
                 unique: true,
                 filter: "[Email] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmailVerificationS_Email",
+                table: "EmailVerificationS",
+                column: "Email",
+                unique: true,
+                filter: "[Email] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Account");
+
+            migrationBuilder.DropTable(
+                name: "EmailVerificationS");
 
             migrationBuilder.DropTable(
                 name: "Customer");

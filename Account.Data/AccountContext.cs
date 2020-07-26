@@ -1,8 +1,5 @@
 ﻿using Account.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Configuration;
 
 namespace Account.Data
@@ -12,13 +9,11 @@ namespace Account.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Entities.Account> Accounts { get; set; }
 
+
+
         public AccountContext(DbContextOptions<AccountContext> options)
   : base(options)
         { }
-        public AccountContext()
-        {
-
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -31,6 +26,7 @@ namespace Account.Data
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Entities.Account>().ToTable("Account");
+            //Customer
             modelBuilder.Entity<Customer>()
                                .Property(customer => customer.Id);
             modelBuilder.Entity<Customer>()
@@ -41,11 +37,12 @@ namespace Account.Data
                   .HasIndex(customer => customer.Email)
                   .IsUnique();
             modelBuilder.Entity<Customer>()
-                .Property(customer => customer.Password)
-           .IsRequired();
-
-            //VerificationEmail
-
+              .Property(customer => customer.PasswordHash);
+            modelBuilder.Entity<Customer>()
+              .Property(customer => customer.PasswordSalt);
+            modelBuilder.Entity<Customer>()
+              .Property(customer => customer.Active);
+            //Account
             modelBuilder.Entity<Entities.Account>()
                 .Property(account => account.Id)
            .IsRequired(); ;
@@ -58,9 +55,6 @@ namespace Account.Data
             modelBuilder.Entity<Entities.Account>()
            .Property(account => account.Balance)
            .HasDefaultValue(1000);
-
-
-
         }
     }
 }
