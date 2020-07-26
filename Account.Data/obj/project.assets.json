@@ -1805,6 +1805,7 @@
         "dependencies": {
           "Messages": "1.0.0",
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "3.1.6",
+          "NServiceBus": "7.3.0",
           "System.Configuration.ConfigurationManager": "4.7.0"
         },
         "compile": {
@@ -1817,9 +1818,6 @@
       "Messages/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "NServiceBus": "7.3.0"
-        },
         "compile": {
           "bin/placeholder/Messages.dll": {}
         },

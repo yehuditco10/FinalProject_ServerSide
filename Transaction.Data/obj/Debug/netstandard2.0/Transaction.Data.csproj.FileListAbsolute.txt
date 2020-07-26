@@ -1,0 +1,15 @@
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Transaction.Data.dll.config
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Transaction.Data.deps.json
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Transaction.Data.dll
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Transaction.Data.pdb
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Messages.dll
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Transaction.Services.dll
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Transaction.Services.pdb
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\netstandard2.0\Messages.pdb
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csprojAssemblyReference.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.AssemblyInfoInputs.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.AssemblyInfo.cs
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csproj.CoreCompileInputs.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csproj.CopyComplete
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.dll
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.pdb

@@ -1,6 +1,6 @@
 ﻿using Account.Data;
-using AutoMapper;
-using AutoMapper.Configuration;
+using Account.Services;
+using Account.Services.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,16 +13,9 @@ namespace Account.Handler
 {
     class Program
     {
-        private readonly IConfiguration configuration;
-
-        //public IConfiguration _Configuration { get; }
-        public Program(IConfiguration configuration)
-        {
-            this.configuration = configuration;
-        }
         static async Task Main()
         {
-            Console.Title = "Transaction";
+            Console.Title = "Account";
 
             var endpointConfiguration = new EndpointConfiguration("Account");
 
@@ -54,7 +47,8 @@ namespace Account.Handler
             conventions.DefiningEventsAs(type => type.Namespace == "Messages.Events");
 
             var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
-           
+            containerSettings.ServiceCollection.AddSingleton<ITransactionService, TransactionService>();
+            containerSettings.ServiceCollection.AddScoped<ITransactionRepository, TransactionRepository>();
             containerSettings.ServiceCollection.AddDbContext<AccountContext>(options =>
                         options.UseSqlServer(connection));
 

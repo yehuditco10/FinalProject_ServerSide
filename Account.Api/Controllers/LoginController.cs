@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Account.Api.DTO;
-using Account.Services;
+using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;

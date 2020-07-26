@@ -1,9 +1,8 @@
-﻿using NServiceBus;
-using System;
+﻿using System;
 
 namespace Messages.Events
 {
-   public class TransactionCreated:IEvent
+   public class TransactionCreated
     {
         public Guid TransactionId { get; set; }
         public bool IsSucceeded { get; set; }

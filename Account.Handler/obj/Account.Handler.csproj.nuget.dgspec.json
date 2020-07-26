@@ -222,6 +222,10 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "NServiceBus": {
+              "target": "Package",
+              "version": "[7.3.0, )"
+            },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[4.7.0, )"
@@ -280,10 +284,6 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
-            },
-            "NServiceBus": {
-              "target": "Package",
-              "version": "[7.3.0, )"
             }
           },
           "imports": [

@@ -1,6 +1,7 @@
 using Account.Api.Middleware;
 using Account.Data;
 using Account.Services;
+using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,8 @@ namespace Account.Api
                    Configuration.GetConnectionString("AccountConnection")));
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {

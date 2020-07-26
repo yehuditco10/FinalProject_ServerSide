@@ -1,6 +1,7 @@
 ﻿using Account.Data.Entities;
 using Account.Data.Exceptions;
 using Account.Services;
+using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;

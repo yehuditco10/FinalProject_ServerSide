@@ -26,7 +26,7 @@ namespace Account.Services
                 transactionCorrectness = await HasBalance(transaction.FromAccountId, transaction.Amount);
                 if (transactionCorrectness.IsValid == true)
                 {
-                    transactionCorrectness = await DoTransaction(transaction);
+                    await DoTransaction(transaction);
                 }
             }
             TransactionCreated transactionCreated = new TransactionCreated()
@@ -37,18 +37,34 @@ namespace Account.Services
             };
             await _messageSession.Publish(transactionCreated);
         }
-
-        private Task<TransactionCorrectness> AccountIdsCorrectness(Guid fromAccountId, Guid toAccountId)
+        private async Task<TransactionCorrectness> AccountIdsCorrectness(Guid fromAccountId, Guid toAccountId)
         {
-            _transactionRepository.IsAccountExistsAsync
+            TransactionCorrectness transactionCorrectness = new TransactionCorrectness();
+            if (await _transactionRepository.IsAccountExistsAsync(fromAccountId) == false)
+            {
+                transactionCorrectness.Reason = "The fromAccountId doesn't exist";
+            }
+            else if (await _transactionRepository.IsAccountExistsAsync(toAccountId) == false)
+            {
+                transactionCorrectness.Reason = "The toAccountId doesn't exist";
+            }
+            return transactionCorrectness;
         }
-        private Task<TransactionCorrectness> HasBalance(Guid fromAccountId, int amount)
+        private async Task<TransactionCorrectness> HasBalance(Guid fromAccountId, int amount)
         {
-            throw new NotImplementedException();
+            TransactionCorrectness transactionCorrectness = new TransactionCorrectness();
+            int balance = await _transactionRepository.GetBalance(fromAccountId);
+            if (balance < amount)
+            {
+                transactionCorrectness.IsValid = false;
+                transactionCorrectness.Reason = "There is not enough money in the account";
+            }
+            return transactionCorrectness;
         }
-        private Task<TransactionCorrectness> DoTransaction(Transaction transaction)
+        private Task DoTransaction(Transaction transaction)
         {
-            throw new NotImplementedException();
+            _transactionRepository.DoTransaction(transaction);
+            return Task.CompletedTask;
         }
     }
 }

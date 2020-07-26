@@ -1,7 +1,6 @@
-﻿using Account.Services;
+﻿using Account.Services.Interfaces;
 using Account.Services.Models;
 using Messages.Commands;
-using Messages.Events;
 using NServiceBus;
 using System.Threading.Tasks;
 
@@ -9,11 +8,11 @@ namespace Account.Handler
 {
     class CreateTransactionHandler : IHandleMessages<CreateTransaction>
     {
-        private readonly IAccountService _accountService;
+        private readonly ITransactionService _transactionService;
 
-        public CreateTransactionHandler(IAccountService accountService)
+        public CreateTransactionHandler(ITransactionService transactionService)
         {
-            _accountService = accountService;
+            _transactionService = transactionService;
         }
         public async Task Handle(CreateTransaction message, IMessageHandlerContext context)
         {
@@ -24,7 +23,7 @@ namespace Account.Handler
                 FromAccountId=message.FromAccountId,
                 Amount=message.Amount
             };
-            await _accountService.CreateTransaction(newTransaction);
+            await _transactionService.CreateTransaction(newTransaction);
         }
     }
 }

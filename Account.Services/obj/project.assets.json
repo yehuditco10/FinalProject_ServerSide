@@ -287,9 +287,6 @@
       "Messages/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "NServiceBus": "7.3.0"
-        },
         "compile": {
           "bin/placeholder/Messages.dll": {}
         },
@@ -1194,6 +1191,7 @@
       "Messages >= 1.0.0",
       "Microsoft.AspNetCore.Cryptography.KeyDerivation >= 3.1.6",
       "NETStandard.Library >= 2.0.3",
+      "NServiceBus >= 7.3.0",
       "System.Configuration.ConfigurationManager >= 4.7.0"
     ]
   },
@@ -1247,6 +1245,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "NServiceBus": {
+            "target": "Package",
+            "version": "[7.3.0, )"
           },
           "System.Configuration.ConfigurationManager": {
             "target": "Package",
