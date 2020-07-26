@@ -34,6 +34,61 @@ prepare script from @createTable;
 execute script;
 deallocate prepare script;
 
+/* AddProperty TransactionId */
+
+select count(*)
+into @exist
+from information_schema.columns
+where table_schema = database() and
+      column_name = 'Correlation_TransactionId' and
+      table_name = @tableNameNonQuoted;
+
+set @query = IF(
+    @exist <= 0,
+    concat('alter table ', @tableNameQuoted, ' add column Correlation_TransactionId varchar(38) character set ascii'), 'select \'Column Exists\' status');
+
+prepare script from @query;
+execute script;
+deallocate prepare script;
+
+/* VerifyColumnType Guid */
+
+set @column_type_TransactionId = (
+  select concat(column_type,' character set ', character_set_name)
+  from information_schema.columns
+  where
+    table_schema = database() and
+    table_name = @tableNameNonQuoted and
+    column_name = 'Correlation_TransactionId'
+);
+
+set @query = IF(
+    @column_type_TransactionId <> 'varchar(38) character set ascii',
+    'call sqlpersistence_raiseerror(concat(\'Incorrect data type for Correlation_TransactionId. Expected varchar(38) character set ascii got \', @column_type_TransactionId, \'.\'));',
+    'select \'Column Type OK\' status');
+
+prepare script from @query;
+execute script;
+deallocate prepare script;
+
+/* WriteCreateIndex TransactionId */
+
+select count(*)
+into @exist
+from information_schema.statistics
+where
+    table_schema = database() and
+    index_name = 'Index_Correlation_TransactionId' and
+    table_name = @tableNameNonQuoted;
+
+set @query = IF(
+    @exist <= 0,
+    concat('create unique index Index_Correlation_TransactionId on ', @tableNameQuoted, '(Correlation_TransactionId)'), 'select \'Index Exists\' status');
+
+prepare script from @query;
+execute script;
+deallocate prepare script;
+
 /* PurgeObsoleteIndex */
 
 select concat('drop index ', index_name, ' on ', @tableNameQuoted, ';')
@@ -42,6 +97,7 @@ where
     table_schema = database() and
     table_name = @tableNameNonQuoted and
     index_name like 'Index_Correlation_%' and
+    index_name <> 'Index_Correlation_TransactionId' and
     table_schema = database()
 into @dropIndexQuery;
 select if (
@@ -61,7 +117,8 @@ from information_schema.columns
 where
     table_schema = database() and
     table_name = @tableNameNonQuoted and
-    column_name like 'Correlation_%'
+    column_name like 'Correlation_%' and
+    column_name <> 'Correlation_TransactionId'
 into @dropPropertiesQuery;
 
 select if (

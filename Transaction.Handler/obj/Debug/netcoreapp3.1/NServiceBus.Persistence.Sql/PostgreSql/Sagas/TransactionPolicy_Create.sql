@@ -28,6 +28,29 @@ create or replace function pg_temp.create_saga_table_TransactionPolicy(tablePref
 );';
         execute script;
 
+/* AddProperty TransactionId */
+
+        script = 'alter table "' || schema || '"."' || tableNameNonQuoted || '" add column if not exists "Correlation_TransactionId" uuid';
+        execute script;
+
+/* VerifyColumnType Guid */
+
+        columnType := (
+            select data_type
+            from information_schema.columns
+            where
+            table_schema = schema and
+            table_name = tableNameNonQuoted and
+            column_name = 'Correlation_TransactionId'
+        );
+        if columnType <> 'uuid' then
+            raise exception 'Incorrect data type for Correlation_TransactionId. Expected "uuid" got "%"', columnType;
+        end if;
+
+/* WriteCreateIndex TransactionId */
+
+        script = 'create unique index if not exists "' || tablePrefix || '_i_688982CFADC2782018B4ED6483736783133617AD" on "' || schema || '"."' || tableNameNonQuoted || '" using btree ("Correlation_TransactionId" asc);';
+        execute script;
 /* PurgeObsoleteIndex */
 
 /* PurgeObsoleteProperties */
@@ -38,7 +61,8 @@ for columnToDelete in
     from information_schema.columns
     where
         table_name = tableNameNonQuoted and
-        column_name LIKE 'Correlation_%'
+        column_name LIKE 'Correlation_%' and
+        column_name <> 'Correlation_TransactionId'
 )
 loop
 	script = '

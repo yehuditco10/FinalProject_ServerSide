@@ -17,7 +17,7 @@ namespace Transaction.Services
         }
         public async Task<bool> DoTransactionAsync(Models.Transaction transaction)
         {
-            transaction.Id = new Guid();
+            transaction.Id = Guid.NewGuid();
             await AddTransactionToDB(transaction);
             SendDoTransactionMessage(transaction);
             return true;
@@ -29,12 +29,12 @@ namespace Transaction.Services
         }
         private void SendDoTransactionMessage(Models.Transaction transaction)
         {
-            Messages.Commands.DoTransaction doTransaction = new Messages.Commands.DoTransaction()
+            Messages.Commands.CreateTransaction doTransaction = new Messages.Commands.CreateTransaction()
             {
                 FromAccountId = transaction.FromAccountId,
                 ToAccountId = transaction.ToAccountId,
                 Amount = transaction.Amount,
-                Id = transaction.Id
+                TransactionId = transaction.Id
             };
              _messageSession.Send(doTransaction).ConfigureAwait(false);
         }

@@ -40,7 +40,7 @@ namespace Account.Data
             }
             catch (Exception e)
             {
-                throw new CreateAccountFailed($"Account creation for { customerModel.Email } failed");
+                throw new CreateAccountFailed($"Account creation for { customerModel.Email } failed",e.InnerException);
             }
         }
 

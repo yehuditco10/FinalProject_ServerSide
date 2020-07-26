@@ -64,7 +64,7 @@ namespace Transaction.Api
                     
                     var routing = transport.Routing();
                     routing.RouteToEndpoint(
-                        messageType: typeof(Messages.Commands.DoTransaction),
+                        messageType: typeof(Messages.Commands.CreateTransaction),
                         destination: "Transaction");
 
                     var conventions = endpointConfiguration.Conventions();

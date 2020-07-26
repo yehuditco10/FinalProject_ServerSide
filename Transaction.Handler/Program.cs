@@ -44,7 +44,7 @@ namespace Transaction.Handler
 
             var routing = transport.Routing();
             routing.RouteToEndpoint(
-                messageType: typeof(Messages.Commands.DoTransaction),
+                messageType: typeof(Messages.Commands.CreateTransaction),
                 destination: "Account");
           
             var conventions = endpointConfiguration.Conventions();
