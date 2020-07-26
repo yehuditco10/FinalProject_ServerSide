@@ -6,18 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="TransactionPolicy.Data.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="TransactionPolicy.Data.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="NServiceBus" Version="7.3.0" />
     <PackageReference Include="NServiceBus.Extensions.DependencyInjection" Version="1.0.1" />
     <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.0.2" />
     <PackageReference Include="NServiceBus.RabbitMQ" Version="6.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Transaction.Api\Transaction.Api.csproj" />
+    <ProjectReference Include="..\Transaction.Data\Transaction.Data.csproj" />
+    <ProjectReference Include="..\Transaction.Services\Transaction.Services.csproj" />
   </ItemGroup>
 
 </Project>

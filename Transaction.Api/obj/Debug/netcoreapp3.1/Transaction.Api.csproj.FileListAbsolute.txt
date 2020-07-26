@@ -145,3 +145,10 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Trans
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Api\bin\Debug\netcoreapp3.1\NServiceBus.Extensions.DependencyInjection.dll
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.csprojAssemblyReference.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.AssemblyInfoInputs.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.AssemblyInfo.cs
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.csproj.CoreCompileInputs.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.dll
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Api\obj\Debug\netcoreapp3.1\Transaction.Api.pdb

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Transaction.Services.Models;
 
 namespace Transaction.Data.Entities
 {
@@ -13,11 +12,6 @@ namespace Transaction.Data.Entities
         public DateTime Date { get; set; }
         public eStatus Status { get; set; }
         public string FailureReason { get; set; }
-    }
-
-    public enum eStatus
-    {
-        processing = 1, successed, failed
     }
 }
 

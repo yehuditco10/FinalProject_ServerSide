@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
 
 namespace Transaction.Services
 {
    public interface ITransactionService
     {
+       Task<bool> DoTransactionAsync(Models.Transaction transaction);
+       
     }
 }

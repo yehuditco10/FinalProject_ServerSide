@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
+using Transaction.Services.Models;
 
 namespace Transaction.Services
 {
     public interface ITransactionRepository
     {
+        Task<bool> AddTransactionToDB(Models.Transaction transaction);
+        Task<int> UpdateStatus(Guid transactionId, eStatus status);
     }
 }
