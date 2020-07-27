@@ -1,10 +1,11 @@
 ﻿using Account.Services.Models;
+using Messages.Events;
 using System.Threading.Tasks;
 
 namespace Account.Services.Interfaces
 {
     public interface ITransactionService
     {
-        Task CreateTransaction(Transaction transaction);
+        Task<TransactionCreated> CreateTransaction(Transaction transaction);
     }
 }

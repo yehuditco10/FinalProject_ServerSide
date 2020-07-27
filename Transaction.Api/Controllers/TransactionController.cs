@@ -17,11 +17,11 @@ namespace Transaction.Api.Controllers
             _mapper = mapper;
             _transactionService = transactionService;
         }
-  
+
         [HttpPost]
         public ActionResult DoTransaction(DTO.Transaction transaction)
         {
-           var res = _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
+            var res = _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
             return Ok(res.Result);
         }
     }

@@ -3,22 +3,17 @@ using Account.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using Messages.Events;
-using NServiceBus;
-
 namespace Account.Services
 {
     public class TransactionService : ITransactionService
     {
-        private readonly IMessageSession _messageSession;
         private readonly ITransactionRepository _transactionRepository;
 
-        public TransactionService(IMessageSession messageSession,
-            ITransactionRepository transactionRepository)
+        public TransactionService( ITransactionRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
-            _messageSession = messageSession;
         }
-        public async Task CreateTransaction(Transaction transaction)
+        public async Task<TransactionCreated> CreateTransaction(Transaction transaction)
         {
             TransactionCorrectness transactionCorrectness = await AccountIdsCorrectness(transaction.FromAccountId, transaction.ToAccountId);
             if (transactionCorrectness.IsValid == true)
@@ -29,13 +24,13 @@ namespace Account.Services
                     await DoTransaction(transaction);
                 }
             }
-            TransactionCreated transactionCreated = new TransactionCreated()
+            return  new TransactionCreated()
             {
                 TransactionId = transaction.TransactionId,
                 IsSucceeded = transactionCorrectness.IsValid,
                 FailureReason = transactionCorrectness.Reason
             };
-            await _messageSession.Publish(transactionCreated);
+           
         }
         private async Task<TransactionCorrectness> AccountIdsCorrectness(Guid fromAccountId, Guid toAccountId)
         {

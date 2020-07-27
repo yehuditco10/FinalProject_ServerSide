@@ -1340,6 +1340,7 @@
       },
       "Account.Services/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
           "Messages": "1.0.0",
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "3.1.6",
           "NServiceBus": "7.3.0",
@@ -1350,6 +1351,9 @@
         }
       },
       "Messages/1.0.0": {
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1"
+        },
         "runtime": {
           "Messages.dll": {}
         }

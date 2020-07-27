@@ -1,6 +1,7 @@
 ﻿using Account.Data;
 using Account.Services;
 using Account.Services.Interfaces;
+using AutoMapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,13 +53,13 @@ namespace Account.Handler
             containerSettings.ServiceCollection.AddDbContext<AccountContext>(options =>
                         options.UseSqlServer(connection));
 
-            //var mappingConfig = new MapperConfiguration(mc =>
-            //{
-            //    mc.AddProfile(new MappingProfile());
-            //});
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new  MappingProfile());
+            });
 
-            //IMapper mapper = mappingConfig.CreateMapper();
-            //containerSettings.ServiceCollection.AddSingleton(mapper);
+            IMapper mapper = mappingConfig.CreateMapper();
+            containerSettings.ServiceCollection.AddSingleton(mapper);
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false);

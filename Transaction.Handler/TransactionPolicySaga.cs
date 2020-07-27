@@ -26,6 +26,8 @@ namespace Transaction.Handler
         {
             mapper.ConfigureMapping<CreateTransaction>(message => message.TransactionId)
                                    .ToSaga(sagaData => sagaData.TransactionId);
+            mapper.ConfigureMapping<TransactionCreated>(message => message.TransactionId)
+                                   .ToSaga(sagaData => sagaData.TransactionId);
         }
     }
 }

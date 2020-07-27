@@ -1,6 +1,7 @@
 ﻿using Account.Services.Interfaces;
 using Account.Services.Models;
 using Messages.Commands;
+using Messages.Events;
 using NServiceBus;
 using System.Threading.Tasks;
 
@@ -23,7 +24,8 @@ namespace Account.Handler
                 FromAccountId=message.FromAccountId,
                 Amount=message.Amount
             };
-            await _transactionService.CreateTransaction(newTransaction);
+           TransactionCreated transactionCreated= await _transactionService.CreateTransaction(newTransaction);
+            await context.Publish(transactionCreated);
         }
     }
 }
