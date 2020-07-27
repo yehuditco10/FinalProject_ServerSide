@@ -37,10 +37,12 @@ namespace Account.Services
             TransactionCorrectness transactionCorrectness = new TransactionCorrectness(true);
             if (await _transactionRepository.IsAccountExistsAsync(fromAccountId) == false)
             {
+                transactionCorrectness.IsValid = false;
                 transactionCorrectness.Reason = "The fromAccountId doesn't exist";
             }
             else if (await _transactionRepository.IsAccountExistsAsync(toAccountId) == false)
             {
+                transactionCorrectness.IsValid = false;
                 transactionCorrectness.Reason = "The toAccountId doesn't exist";
             }
             return transactionCorrectness;

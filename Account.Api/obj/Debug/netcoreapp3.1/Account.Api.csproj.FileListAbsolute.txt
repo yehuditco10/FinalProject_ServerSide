@@ -145,8 +145,8 @@ C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcor
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.pdb
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.genruntimeconfig.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.exe
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.deps.json
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.runtimeconfig.json
@@ -287,11 +287,11 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Accou
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csprojAssemblyReference.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\staticwebassets\Account.Api.StaticWebAssets.Manifest.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\staticwebassets\Account.Api.StaticWebAssets.xml
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.AssemblyInfoInputs.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.AssemblyInfo.cs
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.RazorTargetAssemblyInfo.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CopyComplete
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.pdb
-C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cache

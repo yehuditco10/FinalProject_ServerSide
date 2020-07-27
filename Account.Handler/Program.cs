@@ -1,4 +1,5 @@
 ﻿using Account.Data;
+using Account.Data.Exceptions;
 using Account.Services;
 using Account.Services.Interfaces;
 using AutoMapper;
@@ -31,6 +32,9 @@ namespace Account.Handler
                 {
                     return new SqlConnection(connection);
                 });
+            var recoverability = endpointConfiguration.Recoverability();
+            recoverability.AddUnrecoverableException<FailedException>();
+            recoverability.AddUnrecoverableException(typeof(ArgumentException));
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
             transport.UseConventionalRoutingTopology();

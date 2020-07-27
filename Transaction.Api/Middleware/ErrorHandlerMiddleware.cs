@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Transaction.Data.Exceptions;
 
 namespace Transaction.Api.Middleware
 {
@@ -32,10 +33,10 @@ namespace Transaction.Api.Middleware
             HttpStatusCode code = HttpStatusCode.BadRequest;
             string result = JsonConvert.SerializeObject(new { error = ex.Message });
 
+            if (ex is UpdateStatusFailedException || ex is AddToDBFailedExeption)
+                code = HttpStatusCode.InternalServerError;
             //if (ex is LoginFailedException)
             //    code = HttpStatusCode.Unauthorized;
-            //else if (ex is CreateAccountFailed)
-            //    code = HttpStatusCode.InternalServerError;
             //else if (ex is AccountNotFoundException)
             //    code = HttpStatusCode.NotFound;
             //// whice status code?

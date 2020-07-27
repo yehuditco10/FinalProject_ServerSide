@@ -1,6 +1,7 @@
 ﻿using NServiceBus;
 using System;
 using System.Threading.Tasks;
+using Transaction.Services.Models;
 
 namespace Transaction.Services
 {
@@ -17,6 +18,7 @@ namespace Transaction.Services
         }
         public async Task<bool> DoTransactionAsync(Models.Transaction transaction)
         {
+
             transaction.Id = Guid.NewGuid();
             transaction.Status = Models.eStatus.processing;
             transaction.Date = DateTime.Now;
@@ -24,6 +26,12 @@ namespace Transaction.Services
             SendDoTransactionMessage(transaction);
             return true;
         }
+
+        public async Task UpdateStatus(TransactionStatus transactionStatus)
+        {
+           await _transactionRepository.UpdateStatus(transactionStatus);
+        }
+
         private async Task<bool> AddTransactionToDB(Models.Transaction transaction)
         {
             

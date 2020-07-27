@@ -3,6 +3,7 @@ using Account.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using Account.Data.Exceptions;
 
 namespace Account.Data
 {
@@ -29,6 +30,8 @@ namespace Account.Data
             {
                 var from =await _accountContext.Accounts.FirstOrDefaultAsync(account => account.Id == transaction.FromAccountId);
                 var to = await _accountContext.Accounts.FirstOrDefaultAsync(account => account.Id == transaction.ToAccountId);
+                if (from == null || to == null)
+                    throw new FailedException("in DoTransaction, account ids are not valid");
                 from.Balance -= transaction.Amount;
                 to.Balance += transaction.Amount;
                 await  _accountContext.SaveChangesAsync();

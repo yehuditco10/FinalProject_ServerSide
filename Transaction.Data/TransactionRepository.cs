@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using Transaction.Data.Exceptions;
 using Transaction.Services;
 using Transaction.Services.Models;
 
@@ -28,11 +29,11 @@ namespace Transaction.Data
                     transaction.Status = status;
                     return await _transactionContext.SaveChangesAsync();
                 }
-                throw new Exceptions.TransactionNotFoundExeption("This transaction id not found");
+                throw new TransactionNotFoundExeption("This transaction id not found");
             }
             catch (Exception e)
             {
-                throw new Exceptions.AddToDBFailedExeption(e.Message);
+                throw new AddToDBFailedExeption(e.Message);
             }
 
         }
@@ -40,12 +41,36 @@ namespace Transaction.Data
         {
             try
             {
-                var e = _transactionContext.Transactions.Add(_mapper.Map<Entities.Transaction>(transaction));
+                _transactionContext.Transactions.Add(_mapper.Map<Entities.Transaction>(transaction));
                 return await _transactionContext.SaveChangesAsync() > 0;
             }
             catch (Exception e)
             {
-                throw new Exceptions.AddToDBFailedExeption(e.Message, e.InnerException);
+                throw new AddToDBFailedExeption(e.Message, e.InnerException);
+            }
+        }
+
+        public async Task UpdateStatus(TransactionStatus transactionStatus)
+        {
+            try
+            {
+                var transaction = await _transactionContext.Transactions.FirstOrDefaultAsync(
+                    t => t.Id == transactionStatus.TransactionId);
+                if (transaction == null)
+                {
+                    throw new TransactionNotFoundExeption("TransactionId is not valid");
+                }
+                if (transactionStatus.isSucceeded == false)
+                {
+                    transaction.Status = eStatus.failed;
+                    transaction.FailureReason = transactionStatus.FailureReason;
+                }
+                else
+                    transaction.Status = eStatus.successed;
+            }
+            catch (Exception e)
+            {
+                throw new UpdateStatusFailedException(e.Message);
             }
         }
     }
