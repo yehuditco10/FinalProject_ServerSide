@@ -2,24 +2,21 @@
 using Account.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Account.Data
 {
-    public class TransactionRepository : ITransactionRepository
+    public class TransferenceRepository : ITransactionRepository
     {
         private readonly AccountContext _accountContext;
-        public TransactionRepository(AccountContext accountContext)
+        public TransferenceRepository(AccountContext accountContext)
         {
             _accountContext = accountContext;
         }
         public async Task<bool> IsAccountExistsAsync(Guid accountId)
         {
            var exist= await _accountContext.Accounts.FirstOrDefaultAsync(i => i.Id == accountId);
-            return exist.Id != null;
+            return exist != null;
         } 
         public async Task<int> GetBalance(Guid accountId)
         {

@@ -18,13 +18,15 @@ namespace Transaction.Services
         public async Task<bool> DoTransactionAsync(Models.Transaction transaction)
         {
             transaction.Id = Guid.NewGuid();
+            transaction.Status = Models.eStatus.processing;
+            transaction.Date = DateTime.Now;
             await AddTransactionToDB(transaction);
             SendDoTransactionMessage(transaction);
             return true;
         }
         private async Task<bool> AddTransactionToDB(Models.Transaction transaction)
         {
-            transaction.Status = Models.eStatus.processing;
+            
             return await _transactionRepository.AddTransactionToDB(transaction);
         }
         private void SendDoTransactionMessage(Models.Transaction transaction)

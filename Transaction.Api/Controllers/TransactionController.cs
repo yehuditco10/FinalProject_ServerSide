@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using Transaction.Services;
 
 namespace Transaction.Api.Controllers
@@ -21,6 +22,8 @@ namespace Transaction.Api.Controllers
         [HttpPost]
         public ActionResult DoTransaction(DTO.Transaction transaction)
         {
+            if (transaction.FromAccountId == transaction.ToAccountId)
+                throw new Exception("Not Make sence Data");
             var res = _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
             return Ok(res.Result);
         }

@@ -48,8 +48,8 @@ namespace Account.Handler
             conventions.DefiningEventsAs(type => type.Namespace == "Messages.Events");
 
             var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
-            containerSettings.ServiceCollection.AddSingleton<ITransactionService, TransactionService>();
-            containerSettings.ServiceCollection.AddScoped<ITransactionRepository, TransactionRepository>();
+            containerSettings.ServiceCollection.AddSingleton<ITransferenceService, TransferenceService>();
+            containerSettings.ServiceCollection.AddScoped<ITransactionRepository, TransferenceRepository>();
             containerSettings.ServiceCollection.AddDbContext<AccountContext>(options =>
                         options.UseSqlServer(connection));
 

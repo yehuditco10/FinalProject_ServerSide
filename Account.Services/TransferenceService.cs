@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Messages.Events;
 namespace Account.Services
 {
-    public class TransactionService : ITransactionService
+    public class TransferenceService : ITransferenceService
     {
         private readonly ITransactionRepository _transactionRepository;
 
-        public TransactionService( ITransactionRepository transactionRepository)
+        public TransferenceService( ITransactionRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
         }
@@ -34,7 +34,7 @@ namespace Account.Services
         }
         private async Task<TransactionCorrectness> AccountIdsCorrectness(Guid fromAccountId, Guid toAccountId)
         {
-            TransactionCorrectness transactionCorrectness = new TransactionCorrectness();
+            TransactionCorrectness transactionCorrectness = new TransactionCorrectness(true);
             if (await _transactionRepository.IsAccountExistsAsync(fromAccountId) == false)
             {
                 transactionCorrectness.Reason = "The fromAccountId doesn't exist";
@@ -47,7 +47,7 @@ namespace Account.Services
         }
         private async Task<TransactionCorrectness> HasBalance(Guid fromAccountId, int amount)
         {
-            TransactionCorrectness transactionCorrectness = new TransactionCorrectness();
+            TransactionCorrectness transactionCorrectness = new TransactionCorrectness(true);
             int balance = await _transactionRepository.GetBalance(fromAccountId);
             if (balance < amount)
             {

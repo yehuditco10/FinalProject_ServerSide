@@ -27,8 +27,8 @@ namespace Account.Api
                    Configuration.GetConnectionString("AccountConnection")));
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<ITransactionService, TransactionService>();
-            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<ITransferenceService, TransferenceService>();
+            services.AddScoped<ITransactionRepository, TransferenceRepository>();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {

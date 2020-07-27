@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Account.Services.Interfaces
 {
-    public interface ITransactionService
+    public interface ITransferenceService
     {
         Task<TransactionCreated> CreateTransaction(Transaction transaction);
     }

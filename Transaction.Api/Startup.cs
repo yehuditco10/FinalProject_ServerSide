@@ -21,11 +21,12 @@ namespace Transaction.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddDbContext<TransactionContext>(options =>
                options.UseSqlServer(
                    Configuration.GetConnectionString("TransactionConnection")));
-            services.AddScoped<ITransactionService, TransactionService>();
-            services.AddScoped<ITransactionRepository, TransactionRepository>();
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
