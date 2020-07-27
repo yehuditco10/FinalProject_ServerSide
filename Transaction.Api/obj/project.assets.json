@@ -3029,7 +3029,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "System.ComponentModel.Annotations": "4.7.0"
         },
         "compile": {
           "bin/placeholder/Messages.dll": {}
@@ -3046,6 +3047,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
           "Microsoft.EntityFrameworkCore": "3.1.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.6",
+          "System.ComponentModel.Annotations": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "Transaction.Services": "1.0.0"
         },
@@ -3062,7 +3064,8 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
           "Messages": "1.0.0",
-          "NServiceBus": "7.3.0"
+          "NServiceBus": "7.3.0",
+          "System.ComponentModel.Annotations": "4.7.0"
         },
         "compile": {
           "bin/placeholder/Transaction.Services.dll": {}
@@ -9738,6 +9741,7 @@
       "NServiceBus.SqlServer >= 6.1.1",
       "Swashbuckle.AspNetCore >= 5.5.1",
       "Swashbuckle.AspNetCore.Swagger >= 5.5.1",
+      "System.ComponentModel.Annotations >= 4.7.0",
       "Transaction.Data >= 1.0.0"
     ]
   },
@@ -9827,6 +9831,10 @@
           "Swashbuckle.AspNetCore.Swagger": {
             "target": "Package",
             "version": "[5.5.1, )"
+          },
+          "System.ComponentModel.Annotations": {
+            "target": "Package",
+            "version": "[4.7.0, )"
           }
         },
         "imports": [

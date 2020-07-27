@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G31SbK5GojPrvUX9k38hR+Zm1ccRLiamZzEVTxPTfc2rlLHu2GlpNwykwZPdJLVZBky2bfoEQwQ57DCEJgknWw==",
+  "dgSpecHash": "vx6RtPesYOXk/Iu1uQUxn8fHtFzNSCWx2I+PuzAfSV+v+ofxgsf3VFrfwnnQqaTBoYx/1SKXdxaw6RI11EXGKQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Messages\\Messages.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
-    "C:\\Users\\bhartman\\.nuget\\packages\\system.componentmodel.annotations\\4.6.0\\system.componentmodel.annotations.4.6.0.nupkg.sha512",
+    "C:\\Users\\bhartman\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.memory\\4.5.2\\system.memory.4.5.2.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uqkiEEeEUcteUJqY/MzI8jOsTn/C2SgOmYUsll/YmcAo5oygdbqfMb9hLZKOLGHcCKS50xgVNdVxfkV2AzFKkA==",
+  "dgSpecHash": "J73D4zZrhVI2gbBYLXZ5ixvy5vxcO/V3PEsLGuNuAiRgyy+56BTwaQWcVed/vRVUCpxVjUiWaZM4Q96a7DB/uQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,7 @@
     "C:\\Users\\bhartman\\.nuget\\packages\\nservicebus\\7.3.0\\nservicebus.7.3.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.collections.immutable\\1.7.0\\system.collections.immutable.1.7.0.nupkg.sha512",
-    "C:\\Users\\bhartman\\.nuget\\packages\\system.componentmodel.annotations\\4.6.0\\system.componentmodel.annotations.4.6.0.nupkg.sha512",
+    "C:\\Users\\bhartman\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",

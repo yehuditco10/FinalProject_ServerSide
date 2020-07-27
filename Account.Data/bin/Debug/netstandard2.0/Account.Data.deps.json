@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.6",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.6",
           "NETStandard.Library": "2.0.3",
+          "System.ComponentModel.Annotations": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0"
         },
         "runtime": {
@@ -1344,6 +1345,7 @@
           "Messages": "1.0.0",
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "3.1.6",
           "NServiceBus": "7.3.0",
+          "System.ComponentModel.Annotations": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0"
         },
         "runtime": {
@@ -1352,7 +1354,8 @@
       },
       "Messages/1.0.0": {
         "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "System.ComponentModel.Annotations": "4.7.0"
         },
         "runtime": {
           "Messages.dll": {}
