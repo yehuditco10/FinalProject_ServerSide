@@ -1,11 +1,10 @@
-﻿using DataAnnotationsExtensions;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Account.Api.DTO
 {
     public class Login
     {
-        [Email]
+        [EmailAddress]
         [Required]
         public string Email { get; set; }
         [Required]

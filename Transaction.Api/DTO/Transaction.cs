@@ -9,6 +9,7 @@ namespace Transaction.Api.DTO
         public Guid FromAccountId { get; set; }
         [Required]
         public Guid ToAccountId { get; set; }
+        [Required]
         public int Amount { get; set; }
     }
 }

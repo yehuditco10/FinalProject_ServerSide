@@ -8,6 +8,7 @@ namespace Account.Data.Entities
     {
         public Guid Id { get; set; }
         public Guid AccountId { get; set; }
+        public virtual Account Account { get; set; }
         public Guid TransactionID { get; set; }
         public bool IsCredit { get; set; }
         public int TransactionAmount { get; set; }

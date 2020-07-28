@@ -7,11 +7,8 @@ namespace Account.Data
     public class AccountContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
-
         public DbSet<Entities.Account> Accounts { get; set; }
         public DbSet<Operation> Operations { get; set; }
-
-
         public AccountContext(DbContextOptions<AccountContext> options)
   : base(options)
         { }
