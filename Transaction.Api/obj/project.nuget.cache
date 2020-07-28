@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZzvR6NCbqx2DtgV3OEgKuga0vKqRGWECqQdFcRK0MPl4lw5bGqto8qSzBNXGAOBIEBq9GRlD0DSAoR/4sdl6Jg==",
+  "dgSpecHash": "pnrHBuYOLdFVmLz7kTgXvWFyElH46jKH2CEuylMI+EbShQVSd3Ai2CGF6wbWcgLCct7mg5ZqelrOXUg7sJ501A==",
   "success": true,
   "projectFilePath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Transaction.Api\\Transaction.Api.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,7 @@
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
-    "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\2.9.4\\microsoft.codeanalysis.analyzers.2.9.4.nupkg.sha512",
+    "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.0.0\\microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.codeanalysis.common\\3.3.1\\microsoft.codeanalysis.common.3.3.1.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.3.1\\microsoft.codeanalysis.csharp.3.3.1.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\3.3.1\\microsoft.codeanalysis.csharp.workspaces.3.3.1.nupkg.sha512",

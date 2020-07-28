@@ -19,7 +19,7 @@ namespace Account.Handler
         }
         public async Task Handle(CreateTransaction message, IMessageHandlerContext context)
         {
-            _log.Error("got create transaction from transaction service!");
+            _log.Info($"The transaction was recorded, starting the transfer process between {message.FromAccountId} and {message.ToAccountId} ");
             Transaction newTransaction = new Transaction()
             {
                 TransactionId=message.TransactionId,
@@ -28,7 +28,7 @@ namespace Account.Handler
                 Amount=message.Amount
             };
            TransactionCreated transactionCreated = await _transactionService.CreateTransaction(newTransaction);
-            _log.Error("publish transactionCreated");
+            _log.Info("publish transactionCreated");
             await context.Publish(transactionCreated);
         }
     }

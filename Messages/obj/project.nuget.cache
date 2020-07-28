@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "vx6RtPesYOXk/Iu1uQUxn8fHtFzNSCWx2I+PuzAfSV+v+ofxgsf3VFrfwnnQqaTBoYx/1SKXdxaw6RI11EXGKQ==",
+  "dgSpecHash": "zEN+y1drQWRuTBKXuq1RUibGw/wPCwM/A9thQf1foEiVyD/s2+0rdyZtwsilv9PeU5UGS0O5dqPCO884W22BIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Messages\\Messages.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bhartman\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.0.0\\microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.0\\microsoft.extensions.dependencyinjection.abstractions.3.0.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",

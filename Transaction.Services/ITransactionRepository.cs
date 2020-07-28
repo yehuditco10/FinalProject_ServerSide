@@ -8,5 +8,6 @@ namespace Transaction.Services
     {
         Task<bool> AddTransactionToDB(Models.Transaction transaction);
         Task<int> UpdateStatus(Guid transactionId, eStatus status);
+        Task UpdateStatus(TransactionStatus transactionStatus);
     }
 }
