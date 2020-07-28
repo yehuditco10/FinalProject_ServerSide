@@ -28,7 +28,14 @@ namespace Account.Services
             }
             return false;
         }
-       
+
+        public async Task CreateOrerations(Operations operations)
+        {
+
+            await _accountRepository.CreateOperation(operations.ToAccountId, operations.Amount, "credit",operations.TransactionId);
+            await _accountRepository.CreateOperation(operations.FromAccountId, operations.Amount, "debit",operations.TransactionId);
+        }
+
         public int GenerateRandomNo(int min, int max)
         {
             Random _rdm = new Random();
