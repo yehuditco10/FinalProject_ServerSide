@@ -54,6 +54,8 @@ namespace Account.Handler
             var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
             containerSettings.ServiceCollection.AddSingleton<ITransferenceService, TransferenceService>();
             containerSettings.ServiceCollection.AddScoped<ITransferenceRepository, TransferenceRepository>();
+            containerSettings.ServiceCollection.AddSingleton<IAccountService, AccountService>();
+            containerSettings.ServiceCollection.AddScoped<IAccountRepository, AccountRepository>();
             containerSettings.ServiceCollection.AddDbContext<AccountContext>(options =>
                         options.UseSqlServer(connection));
 

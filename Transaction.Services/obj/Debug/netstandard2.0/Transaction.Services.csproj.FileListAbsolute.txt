@@ -1,14 +1,3 @@
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Transaction.Services.deps.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Transaction.Services.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Transaction.Services.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Messages.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Messages.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.csprojAssemblyReference.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.AssemblyInfoInputs.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.AssemblyInfo.cs
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.csproj.CopyComplete
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.pdb
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Transaction.Services.deps.json
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Transaction.Services.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Services\bin\Debug\netstandard2.0\Transaction.Services.pdb
@@ -20,4 +9,3 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Trans
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.csproj.CopyComplete
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Services\obj\Debug\netstandard2.0\Transaction.Services.csproj.CoreCompileInputs.cache

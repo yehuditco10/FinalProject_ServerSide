@@ -1,30 +1,3 @@
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csprojAssemblyReference.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.AssemblyInfoInputs.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.AssemblyInfo.cs
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.exe
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Data.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Services.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Messages.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Data.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Data.dll.config
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Services.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Services.dll.config
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Messages.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.RazorTargetAssemblyInfo.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CopyComplete
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\staticwebassets\Account.Api.StaticWebAssets.Manifest.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\staticwebassets\Account.Api.StaticWebAssets.xml
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.deps.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.runtimeconfig.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.runtimeconfig.dev.json
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.dll
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.pdb
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.genruntimeconfig.cache
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -36,7 +9,6 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Accou
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Account.Api.pdb
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\DataAnnotationsExtensions.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
@@ -176,6 +148,7 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Accou
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CopyComplete
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.pdb
+<<<<<<< HEAD
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -295,3 +268,5 @@ C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcor
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll
+=======
+>>>>>>> 931892256e659c6bde8c78a569f446226b66109f

@@ -11,6 +11,7 @@ namespace Account.Services.Interfaces
         Task<bool> CreateAsync(Customer customer);
         Task<Guid> LoginAsync(string email, string password);
         Task<Models.Account> GetAccountAsync(Guid accountId);
-        //int GenerateRandomNo(int min, int max); why it should be public?
+        int GenerateRandomNo(int min, int max);
+        Task CreateOrerations(Operations operation);
     }
 }

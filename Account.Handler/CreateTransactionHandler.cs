@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace Account.Handler
 {
     class CreateTransactionHandler : IHandleMessages<CreateTransaction>
+
     {
         private readonly ITransferenceService _transferenceService;
         static ILog _log = LogManager.GetLogger<CreateTransactionHandler>();
@@ -28,8 +29,20 @@ namespace Account.Handler
                 Amount=message.Amount
             };
            TransactionCreated transactionCreated = await _transferenceService.CreateTransaction(newTransaction);
+            
+            if(transactionCreated.IsSucceeded==true)
+            {
+                TransactionSucceeded transactionSucceeded = new TransactionSucceeded()
+                {
+                    TransactionId = transactionCreated.TransactionId,
+                    FromAccountId = message.FromAccountId,
+                    ToAccountId = message.ToAccountId,
+                    Amount = message.Amount
+                };
+                await context.Publish(transactionSucceeded).ConfigureAwait(false);
+            }
             _log.Info("publish transactionCreated");
-            await context.Publish(transactionCreated);
+            await context.Publish(transactionCreated).ConfigureAwait(false);
         }
     }
 }

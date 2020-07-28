@@ -14,6 +14,7 @@ namespace Account.Services.Models
         public DateTime Date { get; set; }
         public Link Link { get; set; }
     }
+
     public class Link
     {
         public string Href { get; set; }
@@ -28,3 +29,4 @@ namespace Account.Services.Models
         }
     }
 }
+

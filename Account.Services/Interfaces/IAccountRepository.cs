@@ -11,5 +11,6 @@ namespace Account.Services.Interfaces
         Task<Customer> GetCustomerAsync(string email);
         Task<Models.Account> GetAccountAsync(Guid accountId);
         Task<Guid> GetAccountIdByCustomerIdAsync(Guid customerId);
+        Task CreateOperation(Guid accountId, int amount, string type,Guid transactionId);
     }
 }
