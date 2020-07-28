@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Account.Api.DTO
+namespace Account.Services.Models
 {
     public class Operation
     {

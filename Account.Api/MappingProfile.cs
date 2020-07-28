@@ -1,8 +1,7 @@
 ﻿using Account.Api.DTO;
 using AutoMapper;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Account.Data
 {
@@ -16,7 +15,10 @@ namespace Account.Data
             CreateMap<Services.Models.Customer,Entities.Customer>();
             CreateMap<Entities.Account, Services.Models.Account>();
             CreateMap<Services.Models.Account, Entities.Account>();
-          
+            CreateMap<QueryParameters, Services.Models.Pagination.QueryParameters>();
+            CreateMap<Entities.Operation, Services.Models.Operation>();
+            CreateMap<List<Entities.Operation>,List< Services.Models.Operation>>();
+            CreateMap<IQueryable<Entities.Operation>,List< Services.Models.Operation>>();
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Account.Api.DTO;
-using Microsoft.AspNetCore.Http;
+using Account.Services.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Account.Api.Controllers
 {
@@ -12,11 +13,34 @@ namespace Account.Api.Controllers
     [ApiController]
     public class OperationsHistoryController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult GetHistory([FromQuery] Operation operation)
-        {
+        private readonly IMapper _mapper;
+        private readonly IOperationHistoryService _operationHistoryService;
 
-            return Ok();
+        public OperationsHistoryController(IOperationHistoryService historyService,
+            IMapper imapper)
+        {
+            _mapper = imapper;
+            _operationHistoryService = historyService;
+        }
+        [HttpGet]
+        public IActionResult GetAll([FromQuery] QueryParameters queryParameters)
+        {
+            queryParameters.Query += "OperationDate desc";
+            var queryParametersModel = _mapper.Map<Services.Models.Pagination.QueryParameters>(queryParameters);
+
+            var allOperation = _operationHistoryService.GetByParameters(queryParametersModel);
+            var paginationMetadata = _operationHistoryService.PaginationMetadata(queryParametersModel);
+            Response.Headers
+                .Add("X-Pagination",
+                    JsonConvert.SerializeObject(paginationMetadata));
+           
+            //var toReturn = allCustomers.Select(x => ExpandSingleItem(x));
+            return Ok(new
+            {
+                value = allOperation,
+             //   links = links
+            });
         }
     }
-}
+} 
+

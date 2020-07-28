@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ir8D/GeSfwx3vHxjuURUsllE3ZgHSOmRvP482y6LphAhoRLtKXufBkI1DQO1oMaRTmSQE1vaNL+LOPhZS2vZfw==",
+  "dgSpecHash": "vhOQBddpOebNYTKPs6T2nRugibm5yCXddxhjSAu7vkZyb4P0NstW7uB+Np3rWpQCX7fLM0FuP1ZeLpmXZ+w1kw==",
   "success": true,
   "projectFilePath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Account.Handler\\Account.Handler.csproj",
   "expectedPackageFiles": [
@@ -119,6 +119,7 @@
     "C:\\Users\\bhartman\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
+    "C:\\Users\\bhartman\\.nuget\\packages\\system.linq.dynamic.core\\1.2.0\\system.linq.dynamic.core.1.2.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\bhartman\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",

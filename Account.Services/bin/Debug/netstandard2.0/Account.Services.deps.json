@@ -16,7 +16,8 @@
           "NETStandard.Library": "2.0.3",
           "NServiceBus": "7.3.0",
           "System.ComponentModel.Annotations": "4.7.0",
-          "System.Configuration.ConfigurationManager": "4.7.0"
+          "System.Configuration.ConfigurationManager": "4.7.0",
+          "System.Linq.Dynamic.Core": "1.2.0"
         },
         "runtime": {
           "Account.Services.dll": {}
@@ -164,6 +165,17 @@
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
             "assemblyVersion": "4.0.3.0",
             "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "System.Linq.Dynamic.Core/1.2.0": {
+        "dependencies": {
+          "System.Reflection.Emit": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Linq.Dynamic.Core.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
           }
         }
       },
@@ -439,6 +451,13 @@
       "sha512": "sha512-/anOTeSZCNNI2zDilogWrZ8pNqCmYbzGNexUnNhjW8k0sHqEZ2nHJBp147jBV3hGYswu5lINpNg1vxR7bnqvVA==",
       "path": "system.configuration.configurationmanager/4.7.0",
       "hashPath": "system.configuration.configurationmanager.4.7.0.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nbeI4oOTBNsS2gErl9M0FS2gYW7626DaiFGH2wyx3FS3VdRy3wPZxyFJEFgvCc0/WzySG4z3afOS4qyab51Tng==",
+      "path": "system.linq.dynamic.core/1.2.0",
+      "hashPath": "system.linq.dynamic.core.1.2.0.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",

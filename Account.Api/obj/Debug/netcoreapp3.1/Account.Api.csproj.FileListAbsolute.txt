@@ -294,3 +294,4 @@ C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcor
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CoreCompileInputs.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll
