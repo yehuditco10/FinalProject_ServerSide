@@ -78,31 +78,35 @@ namespace Account.Data.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("Account.Data.Entities.EmailVerification", b =>
+            modelBuilder.Entity("Account.Data.Entities.Operation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("ExpirationTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
-
-                    b.Property<int>("VerificationCode")
+                    b.Property<int>("Balance")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsCredit")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("OperationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TransactionAmount")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TransactionID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
+                    b.HasIndex("AccountId");
 
-                    b.ToTable("EmailVerificationS");
+                    b.ToTable("Operation");
                 });
 
             modelBuilder.Entity("Account.Data.Entities.Account", b =>
@@ -110,6 +114,15 @@ namespace Account.Data.Migrations
                     b.HasOne("Account.Data.Entities.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Account.Data.Entities.Operation", b =>
+                {
+                    b.HasOne("Account.Data.Entities.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

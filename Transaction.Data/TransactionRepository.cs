@@ -39,15 +39,8 @@ namespace Transaction.Data
         }
         public async Task<bool> AddTransactionToDB(Services.Models.Transaction transaction)
         {
-            try
-            {
-                _transactionContext.Transactions.Add(_mapper.Map<Entities.Transaction>(transaction));
-                return await _transactionContext.SaveChangesAsync() > 0;
-            }
-            catch (Exception e)
-            {
-                throw new AddToDBFailedExeption(e.Message, e.InnerException);
-            }
+            _transactionContext.Transactions.Add(_mapper.Map<Entities.Transaction>(transaction));
+            return await _transactionContext.SaveChangesAsync() > 0;
         }
 
         public async Task UpdateStatus(TransactionStatus transactionStatus)

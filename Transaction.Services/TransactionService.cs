@@ -16,13 +16,14 @@ namespace Transaction.Services
             _messageSession = messageSession;
             _transactionRepository = transactionRepository;
         }
+       
         public TransactionService(ITransactionRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
         }
         public async Task<bool> DoTransactionAsync(Models.Transaction transaction)
         {
-
+            //change it to the repo
             transaction.Id = Guid.NewGuid();
             transaction.Status = Models.eStatus.processing;
             transaction.Date = DateTime.Now;

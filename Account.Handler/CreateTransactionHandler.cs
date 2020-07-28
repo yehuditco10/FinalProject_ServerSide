@@ -10,12 +10,12 @@ namespace Account.Handler
 {
     class CreateTransactionHandler : IHandleMessages<CreateTransaction>
     {
-        private readonly ITransferenceService _transactionService;
+        private readonly ITransferenceService _transferenceService;
         static ILog _log = LogManager.GetLogger<CreateTransactionHandler>();
 
-        public CreateTransactionHandler(ITransferenceService transactionService)
+        public CreateTransactionHandler(ITransferenceService transferenceService)
         {
-            _transactionService = transactionService;
+            _transferenceService = transferenceService;
         }
         public async Task Handle(CreateTransaction message, IMessageHandlerContext context)
         {
@@ -27,7 +27,7 @@ namespace Account.Handler
                 FromAccountId=message.FromAccountId,
                 Amount=message.Amount
             };
-           TransactionCreated transactionCreated = await _transactionService.CreateTransaction(newTransaction);
+           TransactionCreated transactionCreated = await _transferenceService.CreateTransaction(newTransaction);
             _log.Info("publish transactionCreated");
             await context.Publish(transactionCreated);
         }

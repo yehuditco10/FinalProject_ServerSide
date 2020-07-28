@@ -8,9 +8,7 @@ namespace Account.Data
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Entities.Account> Accounts { get; set; }
-
-
-
+        public DbSet<Operation> Operations { get; set; }
         public AccountContext(DbContextOptions<AccountContext> options)
   : base(options)
         { }
@@ -26,6 +24,7 @@ namespace Account.Data
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Entities.Account>().ToTable("Account");
+            modelBuilder.Entity<Operation>().ToTable("Operation");
             //Customer
             modelBuilder.Entity<Customer>()
                                .Property(customer => customer.Id);
@@ -55,6 +54,11 @@ namespace Account.Data
             modelBuilder.Entity<Entities.Account>()
            .Property(account => account.Balance)
            .HasDefaultValue(1000);
+
+            //Operation
+            modelBuilder.Entity<Operation>()
+                               .Property(operation => operation.Id);
+            
         }
     }
 }

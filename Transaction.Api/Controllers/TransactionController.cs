@@ -25,7 +25,7 @@ namespace Transaction.Api.Controllers
         {
             if (transaction.FromAccountId == transaction.ToAccountId)
                 return BadRequest("Not Makes sense to transfer to yourself");
-            var res= await _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
+            var res = await _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
             return res;
         }
     }
