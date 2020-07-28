@@ -7,9 +7,9 @@ namespace Account.Services
 {
     public class TransferenceService : ITransferenceService
     {
-        private readonly ITransactionRepository _transactionRepository;
+        private readonly ITransferenceRepository _transactionRepository;
 
-        public TransferenceService( ITransactionRepository transactionRepository)
+        public TransferenceService( ITransferenceRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
         }

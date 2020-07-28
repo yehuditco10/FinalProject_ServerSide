@@ -24,8 +24,8 @@ namespace Transaction.Api.Controllers
         public async Task<ActionResult<bool>> DoTransaction(DTO.Transaction transaction)
         {
             if (transaction.FromAccountId == transaction.ToAccountId)
-                throw new Exception("Not Make sence Data");
-            var res= await _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
+                return BadRequest("Not Makes sense to transfer to yourself");
+            var res = await _transactionService.DoTransactionAsync(_mapper.Map<Services.Models.Transaction>(transaction));
             return res;
         }
     }

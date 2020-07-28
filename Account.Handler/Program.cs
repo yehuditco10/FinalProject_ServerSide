@@ -33,7 +33,7 @@ namespace Account.Handler
                     return new SqlConnection(connection);
                 });
             var recoverability = endpointConfiguration.Recoverability();
-            recoverability.AddUnrecoverableException<FailedException>();
+            recoverability.AddUnrecoverableException<IrreparableException>();
             recoverability.AddUnrecoverableException(typeof(ArgumentException));
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
@@ -53,7 +53,7 @@ namespace Account.Handler
 
             var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
             containerSettings.ServiceCollection.AddSingleton<ITransferenceService, TransferenceService>();
-            containerSettings.ServiceCollection.AddScoped<ITransactionRepository, TransferenceRepository>();
+            containerSettings.ServiceCollection.AddScoped<ITransferenceRepository, TransferenceRepository>();
             containerSettings.ServiceCollection.AddDbContext<AccountContext>(options =>
                         options.UseSqlServer(connection));
 
