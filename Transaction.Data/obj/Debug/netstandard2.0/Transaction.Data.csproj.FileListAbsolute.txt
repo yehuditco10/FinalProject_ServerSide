@@ -9,7 +9,6 @@ C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\bin\Debug\n
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csprojAssemblyReference.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.AssemblyInfoInputs.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.AssemblyInfo.cs
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csproj.CoreCompileInputs.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csproj.CopyComplete
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.dll
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.pdb
@@ -27,3 +26,4 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Trans
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csproj.CopyComplete
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.pdb
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Transaction.Data\obj\Debug\netstandard2.0\Transaction.Data.csproj.CoreCompileInputs.cache

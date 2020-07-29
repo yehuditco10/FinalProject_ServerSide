@@ -13,7 +13,7 @@ namespace Transaction.Handler
         IAmStartedByMessages<CreateTransaction>,
         IHandleMessages<TransactionCreated>
     {
-        static ILog _log = LogManager.GetLogger<TransactionPolicy>();
+        static readonly ILog _log = LogManager.GetLogger<TransactionPolicy>();
         private readonly ITransactionService _transactionService;
         private readonly IMapper _mapper;
 

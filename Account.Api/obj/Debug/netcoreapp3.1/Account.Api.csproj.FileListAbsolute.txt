@@ -134,9 +134,6 @@ C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\bin\Debug\netcor
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csprojAssemblyReference.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.AssemblyInfoInputs.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.AssemblyInfo.cs
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CoreCompileInputs.cache
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.RazorTargetAssemblyInfo.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CopyComplete
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\staticwebassets\Account.Api.StaticWebAssets.Manifest.cache
@@ -295,3 +292,6 @@ C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Accou
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CopyComplete
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.dll
 C:\Users\user1\Documents\Yehudit\Brix\FinalProject\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.pdb
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.csproj.CoreCompileInputs.cache
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Api\obj\Debug\netcoreapp3.1\Account.Api.MvcApplicationPartsAssemblyInfo.cache

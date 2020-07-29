@@ -12,7 +12,7 @@ namespace Account.Handler
 
     {
         private readonly ITransferenceService _transferenceService;
-        static ILog _log = LogManager.GetLogger<CreateTransactionHandler>();
+        static readonly ILog _log = LogManager.GetLogger<CreateTransactionHandler>();
 
         public CreateTransactionHandler(ITransferenceService transferenceService)
         {
@@ -42,7 +42,7 @@ namespace Account.Handler
                 await context.Publish(transactionSucceeded).ConfigureAwait(false);
             }
             _log.Info("publish transactionCreated");
-           //await context.Publish(transactionCreated).ConfigureAwait(false);
+           await context.Publish(transactionCreated).ConfigureAwait(false);
         }
     }
 }

@@ -25,19 +25,16 @@ namespace Account.Api.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] QueryParameters queryParameters)
         {
-            queryParameters.Query += "OperationDate desc";
             var queryParametersModel = _mapper.Map<Services.Models.Pagination.QueryParameters>(queryParameters);
-
             var allOperation = _operationHistoryService.GetByParameters(queryParametersModel);
+            List <Operation> operations= _mapper.Map<List<DTO.Operation>>(allOperation);
             var paginationMetadata = _operationHistoryService.PaginationMetadata(queryParametersModel);
             Response.Headers
                 .Add("X-Pagination",
                     JsonConvert.SerializeObject(paginationMetadata));
-           
-            //var toReturn = allCustomers.Select(x => ExpandSingleItem(x));
             return Ok(new
             {
-                value = allOperation,
+                value = operations,
              //   links = links
             });
         }

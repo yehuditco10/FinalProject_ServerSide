@@ -16,7 +16,7 @@ namespace Account.Data
     {
         private readonly AccountContext _accountContext;
         private readonly IMapper _mapper;
-        private readonly IUrlHelper _urlHelper;
+        //private readonly IUrlHelper _urlHelper;
 
         public OperationRepository(AccountContext accountContext, IMapper mapper
             //,IUrlHelper iURLHelper
@@ -31,7 +31,7 @@ namespace Account.Data
             return _accountContext.Operations.Where(a => a.AccountId == accountId).Count();
         }
 
-        public List<Services.Models.Operation> GetOperationsOrdered(QueryParameters queryParameters)
+        public List<Operation> GetOperationsOrdered(QueryParameters queryParameters)
         {
             var totalCount = GetCountPerAccount(queryParameters.AccountId);
             IQueryable<Entities.Operation> _allItems;
@@ -41,25 +41,25 @@ namespace Account.Data
                 throw new Exception("no content");
             }
 
-            if (queryParameters.HasQuery())
-            {
-               // IComparer<string> descending = (IComparer<string>)(queryParameters.IsDescending() == true ? "Desc" : "").ToList();
-                var f = queryParameters.Query.ToLowerInvariant();
-                _allItems = _accountContext.Operations.Where
-            //(x => x.OperationTime.ToString().Contains(queryParameters.Query.ToLowerInvariant())&& // וגם צריך להוסיף כזה משפט לכל פרמטר שרוצים לסדר לפיו.לא עושה הפוך
-            (x => x.AccountId == queryParameters.AccountId)
-                .OrderBy(key => queryParameters.OrderBy);
+                _allItems = GetAllItemsWithSortingAndFiltering(queryParameters);
+            if(_allItems.Count()==0)
+            { throw new Exception("no data found for this filtering"); }
+                //  var links = CreateLinksForCollection(queryParameters, totalCount);
+                var query = _allItems
+            .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
+                                .Take(queryParameters.PageCount);
+                return _mapper.Map<List<Services.Models.Operation>>(query);
             }
-            else
-            {
-                _allItems = _accountContext.Operations.Where(x => x.AccountId == queryParameters.AccountId).OrderBy(key => queryParameters.OrderBy);
-            }
-          //  var links = CreateLinksForCollection(queryParameters, totalCount);
-            var query = _allItems
-        .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
-                            .Take(queryParameters.PageCount);
-            return _mapper.Map<List<Services.Models.Operation>>(query);
+        private IQueryable<Entities.Operation> GetAllItemsWithSortingAndFiltering(QueryParameters queryParameters)
+        {
+
+            var descending = queryParameters.IsDescending() == true ? "Desc" : "";
+           var _allItems = _accountContext.Operations.Where
+             (x => x.AccountId == queryParameters.AccountId)
+            .OrderBy(key => queryParameters.OrderBy);
+            return _allItems;
         }
+    
         //private List<Link> CreateLinksForCollection(QueryParameters queryParameters, int totalCount)
         //{
         //    var links = new List<Link>
@@ -125,5 +125,43 @@ namespace Account.Data
              _accountContext.Add(newOperation);
             await _accountContext.SaveChangesAsync();
         }
+
+
+
+
+        public IQueryable<Entities.Operation> IsCredit(QueryParameters queryParameters, bool operationType)
+        {
+            return _accountContext.Operations.Where(t => t.IsCredit == operationType)
+                                .OrderBy(queryParameters.OrderBy, queryParameters.IsDescending());
+        }
+        public IQueryable<Entities.Operation> ByTime(QueryParameters queryParameters, DateTime fromDate, DateTime untilDate)
+        {
+            return _accountContext.Operations.Where(t => t.OperationTime >= fromDate && t.OperationTime <=untilDate)
+                                .OrderBy(queryParameters.OrderBy, queryParameters.IsDescending());
+        }
+        //public IQueryable<Operation> Filter(QueryParameters queryParameters, Filter filter)
+        //{
+        //    DateTime emptyDate = new DateTime();
+        //    if (filter.FromDate == emptyDate && filter.ToDate == emptyDate
+        //        && filter.OperationType != default)
+        //        return IsCredit(queryParameters, filter.OperationType);
+        //    if (filter.FromDate != emptyDate && filter.ToDate == emptyDate)
+        //        filter.ToDate = DateTime.Now;
+        //    else
+        //        return FilterByFromDate(queryParameters, filter.FromDate);
+        //}
+        //public List<Operation> GetFilteredInfoAsync(QueryParameters queryParameters, Filter filter)
+        //{
+        //    IQueryable<Operation> historyPage;
+        //    if (filter != null)
+        //        historyPage = Filter(queryParameters, filter);
+        //    else
+        //        return GetAll(queryParameters);
+        //    List<Operation> historyPage1 = historyPage
+        //        .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
+        //        .Take(queryParameters.PageCount).ToList();
+        //    List<HistoryModel> history = _mapper.Map<List<HistoryModel>>(historyPage1);
+        //    return history;
+        //}
     }
 }

@@ -1671,19 +1671,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user1\\.nuget\\packages\\": {}
+    "C:\\Users\\bhartman\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
+      "projectUniqueName": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
       "projectName": "Account.Services",
-      "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
-      "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Account.Services\\obj\\",
+      "projectPath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Account.Services\\Account.Services.csproj",
+      "packagesPath": "C:\\Users\\bhartman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Account.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bhartman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1696,8 +1696,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Messages\\Messages.csproj": {
-              "projectPath": "C:\\Users\\user1\\Documents\\Yehudit\\Brix\\FinalProject\\FinalProject_ServerSide\\Messages\\Messages.csproj"
+            "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Messages\\Messages.csproj": {
+              "projectPath": "C:\\Users\\bhartman\\Documents\\FinalProject_ServerSide\\Messages\\Messages.csproj"
             }
           }
         }
@@ -1758,7 +1758,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

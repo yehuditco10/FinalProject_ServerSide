@@ -7,7 +7,6 @@ namespace Account.Services.Models.Pagination
     {
         public int maxPageCount;
         public int Page { get; set; }
-
         public int PageCount { get; set; }
         public string Query { get; set; }
         public string OrderBy { get; set; }
