@@ -31,16 +31,11 @@ namespace Account.Data
         {
             var totalCount = GetCountPerAccount(queryParameters.AccountId);
             IQueryable<Entities.Operation> _allItems;
-            if (totalCount == 0)
-            {
-                //to do
-                throw new Exception("no content");
-            }
-
+          
             _allItems = FilterResult(queryParameters);
             if (_allItems.Count() == 0)
             {
-                throw new Exception("no data found for this filtering");
+                return _mapper.Map < List < Services.Models.Operation >> (_allItems);
             }
             //  var links = CreateLinksForCollection(queryParameters, totalCount);
             var query = _allItems

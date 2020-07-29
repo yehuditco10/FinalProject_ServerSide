@@ -31,7 +31,6 @@ namespace Account.Services
         }
         public async Task CreateOrerations(Transaction transaction)
         {
-            //??object or parameters
             Operation operatoinTo = new Operation()
             {
                 AccountId = transaction.ToAccountId,

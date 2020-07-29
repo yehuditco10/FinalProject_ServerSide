@@ -39,6 +39,7 @@ namespace Account.Handler
                     ToAccountId = message.ToAccountId,
                     Amount = message.Amount
                 };
+                //change to send - message
                 await context.Publish(transactionSucceeded).ConfigureAwait(false);
             }
             _log.Info("publish transactionCreated");
