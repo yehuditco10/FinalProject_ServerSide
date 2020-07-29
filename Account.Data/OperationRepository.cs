@@ -50,19 +50,23 @@ namespace Account.Data
         }
         private IQueryable<Entities.Operation> FilterResult(QueryParameters queryParameters)
         {
-            IQueryable<Entities.Operation> res;
             DateTime emptyDate = DateTime.MinValue;
-            res = _accountContext.Operations.Where(id => id.AccountId == queryParameters.AccountId)
+            IQueryable<Entities.Operation> res = _accountContext.Operations.
+                Where(id => id.AccountId == queryParameters.AccountId)
                 .OrderBy(queryParameters.OrderBy, queryParameters.IsDescending());
+
             if (queryParameters.FromDate != emptyDate && queryParameters.ToDate == emptyDate)
             {
                 queryParameters.ToDate = DateTime.Now;
-            }
-            if (queryParameters.FromDate != emptyDate && !String.IsNullOrEmpty(queryParameters.Type))
-            {
-                res = FilterByDatesAndType(queryParameters);
+
+                if (!String.IsNullOrEmpty(queryParameters.Type))
+                {
+                    res = FilterByDatesAndType(res, queryParameters);
+                }
                 else
-                res = ByTime(res, queryParameters);
+                {
+                    res = ByTime(res, queryParameters);
+                }
             }
             if (!String.IsNullOrEmpty(queryParameters.Type))
             {
@@ -72,16 +76,16 @@ namespace Account.Data
         }
         private IQueryable<Entities.Operation> IsCredit(IQueryable<Entities.Operation> list, QueryParameters queryParameters)
         {
-            return list.Where(t => t.IsCredit == (queryParameters.Type == "credit"))
+            return list.Where(t => t.IsCredit == (queryParameters.Type == "credit"));
         }
         private IQueryable<Entities.Operation> ByTime(IQueryable<Entities.Operation> list, QueryParameters queryParameters)
         {
             return list.Where(t => t.OperationTime >= queryParameters.FromDate &&
-            t.OperationTime <= queryParameters.ToDate);                            
+            t.OperationTime <= queryParameters.ToDate);
         }
-        private IQueryable<Entities.Operation> FilterByDatesAndType(IQueryable<Entities.Operation> list,QueryParameters queryParameters)
+        private IQueryable<Entities.Operation> FilterByDatesAndType(IQueryable<Entities.Operation> list, QueryParameters queryParameters)
         {
-            return list.Where(t => t.IsCredit == (queryParameters.Type == "credit")&&
+            return list.Where(t => t.IsCredit == (queryParameters.Type == "credit") &&
             t.OperationTime >= queryParameters.FromDate &&
             t.OperationTime <= queryParameters.ToDate);
         }
@@ -95,6 +99,7 @@ namespace Account.Data
             _accountContext.Add(newOperation);
             await _accountContext.SaveChangesAsync();
         }
+
         //public void Add(Entities.Operation item)
         //{
         //    _accountContext.Operations.Add(item);
