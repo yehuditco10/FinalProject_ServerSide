@@ -4,9 +4,6 @@ using AutoMapper;
 using Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Account.Handler
@@ -14,19 +11,19 @@ namespace Account.Handler
     public class CreateOperationHandler : IHandleMessages<TransactionSucceeded>
     {
         static ILog _log = LogManager.GetLogger<CreateOperationHandler>();
-        private readonly IAccountService _accountService;
+        private readonly IOperationHistoryService _operationHistoryService;
         private readonly IMapper _mapper;
 
-        public CreateOperationHandler(IAccountService accountService,
+        public CreateOperationHandler(IOperationHistoryService operationHistoryService,
             IMapper mapper)
         {
-            _accountService = accountService;
+            _operationHistoryService = operationHistoryService;
             _mapper = mapper;
         }
         public async Task Handle(TransactionSucceeded message, IMessageHandlerContext context)
         {
             _log.Info("in createOperation");
-            await _accountService.CreateOrerations(_mapper.Map<Operations>(message));
+            await _operationHistoryService.CreateOrerations(_mapper.Map<Operation>(message));
         }
     }
 }

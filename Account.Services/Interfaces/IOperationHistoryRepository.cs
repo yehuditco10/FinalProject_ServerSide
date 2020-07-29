@@ -2,6 +2,7 @@
 using Account.Services.Models.Pagination;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Account.Services.Interfaces
 {
@@ -9,5 +10,6 @@ namespace Account.Services.Interfaces
     {
         int GetCountPerAccount(Guid accountId);
         List<Operation> GetOperationsOrdered(QueryParameters queryParameters);
+        Task CreateOperation(Guid accountId, int amount, string type, Guid transactionId);
     }
 }

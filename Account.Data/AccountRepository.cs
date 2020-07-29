@@ -1,6 +1,4 @@
-﻿using Account.Data.Entities;
-using Account.Data.Exceptions;
-using Account.Services;
+﻿using Account.Data.Exceptions;
 using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -106,23 +104,6 @@ namespace Account.Data
             {
                 throw new AccountNotFoundException(e.Message);
             }
-        }
-
-        public async Task CreateOperation(Guid accountId, int amount, string type,Guid transactionId)
-        {
-          Entities.Account account = await _accountContext.Accounts.FirstOrDefaultAsync(a => a.Id == accountId);
-            Operation operation = new Operation()
-            {
-                Id = Guid.NewGuid(),
-                AccountId = accountId,
-                IsCredit = (type == "credit" ? true : false),
-                TransactionAmount = amount,
-                Balance = account.Balance,
-                OperationTime = DateTime.Now,
-                TransactionID = transactionId
-            };
-            await _accountContext.AddAsync(operation);
-            await _accountContext.SaveChangesAsync();
         }
     }
 }

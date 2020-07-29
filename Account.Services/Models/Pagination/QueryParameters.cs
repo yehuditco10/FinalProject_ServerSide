@@ -7,12 +7,8 @@ namespace Account.Services.Models.Pagination
     {
         public int maxPageCount;
         public int Page { get; set; }
-        private int _pageCount;
-        public int PageCount
-        {
-            get { return _pageCount; }
-            set { _pageCount = (value > maxPageCount) ? maxPageCount : value; }
-        }
+
+        public int PageCount { get; set; }
         public string Query { get; set; }
         public string OrderBy { get; set; }
         public Guid AccountId { get; set; }
@@ -28,6 +24,8 @@ namespace Account.Services.Models.Pagination
 
         public int GetTotalPages(int totalCount)
         {
+            if (PageCount == 0)
+                return 0;
             return (int)Math.Ceiling(totalCount / (double)PageCount);
         }
 

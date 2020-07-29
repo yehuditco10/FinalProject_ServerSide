@@ -20,10 +20,9 @@ namespace Account.Data
             CreateMap<Services.Models.Account, Entities.Account>();
             CreateMap<QueryParameters, Services.Models.Pagination.QueryParameters>();
             CreateMap<Entities.Operation, Services.Models.Operation>();
-            CreateMap<List<Entities.Operation>,List< Services.Models.Operation>>();
-            CreateMap<IQueryable<Entities.Operation>,List< Services.Models.Operation>>();
+            CreateMap<Entities.Operation,Services.Models.Operation>();
             //?here
-            CreateMap<TransactionSucceeded, Operations>();
+            CreateMap<TransactionSucceeded, Services.Models.Operation>();
 
         }
     }

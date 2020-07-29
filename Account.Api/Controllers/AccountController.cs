@@ -26,7 +26,7 @@ namespace Account.Api.Controllers
         {
             Services.Models.Account account = await _accountService.GetAccountAsync(accountId);
             if (account != null)
-            {
+            {//למה לא אוטומטי?
                 AccountInfo accountInfo = new AccountInfo()
                 {
                     FirstName = account.Customer.FirstName,

@@ -18,7 +18,7 @@ namespace Account.Handler
             CreateMap<Services.Models.Customer, Data.Entities.Customer>();
             CreateMap<Data.Entities.Account, Services.Models.Account>();
             CreateMap<Services.Models.Account, Data.Entities.Account>();
-            CreateMap<TransactionSucceeded, Operations>();
+            CreateMap<TransactionSucceeded, Services.Models.Operation>();
         }
     }
 }

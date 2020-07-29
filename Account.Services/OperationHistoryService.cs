@@ -3,6 +3,7 @@ using Account.Services.Models;
 using Account.Services.Models.Pagination;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Account.Services
 {
@@ -15,7 +16,7 @@ namespace Account.Services
         }
         public List<Operation> GetByParameters(QueryParameters queryParameters)
         {
-            return _operationHistoryRepository.GetOperationsOrdered(queryParameters).ToList();
+            return _operationHistoryRepository.GetOperationsOrdered(queryParameters);
         }
         public PaginationMetadata PaginationMetadata(QueryParameters queryParameters)
         {
@@ -27,6 +28,11 @@ namespace Account.Services
             };
             paginationMetadata.TotalPages = queryParameters.GetTotalPages(paginationMetadata.TotalCount);
             return paginationMetadata;
+        }
+        public async Task CreateOrerations(Operation operations)
+        {
+            await _operationHistoryRepository.CreateOperation(operations.ToAccountId, operations.Amount, "credit", operations.TransactionId);
+            await _operationHistoryRepository.CreateOperation(operations.FromAccountId, operations.Amount, "debit", operations.TransactionId);
         }
     }
 }
