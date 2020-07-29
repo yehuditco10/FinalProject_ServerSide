@@ -14,9 +14,9 @@ namespace Account.Api.Controllers
     public class OperationsHistoryController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IOperationHistoryService _operationHistoryService;
+        private readonly IOperationService _operationHistoryService;
 
-        public OperationsHistoryController(IOperationHistoryService historyService,
+        public OperationsHistoryController(IOperationService historyService,
             IMapper imapper)
         {
             _mapper = imapper;

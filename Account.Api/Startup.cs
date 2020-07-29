@@ -29,8 +29,8 @@ namespace Account.Api
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<ITransferenceService, TransferenceService>();
             services.AddScoped<ITransferenceRepository, TransferenceRepository>();
-            services.AddScoped<IOperationHistoryService, OperationHistoryService>();
-            services.AddScoped<IOperationHistoryRepository, OperationHistoryRepository>();
+            services.AddScoped<IOperationService, OperationService>();
+            services.AddScoped<IOperationRepository, OperationRepository>();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {

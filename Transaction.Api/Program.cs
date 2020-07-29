@@ -61,7 +61,7 @@ namespace Transaction.Api
                     subscriptions.CacheFor(TimeSpan.FromMinutes(10));
                     endpointConfiguration.SendFailedMessagesTo("error");
                     endpointConfiguration.AuditProcessedMessagesTo("audit");
-                    
+
                     var routing = transport.Routing();
                     routing.RouteToEndpoint(
                         messageType: typeof(Messages.Commands.CreateTransaction),

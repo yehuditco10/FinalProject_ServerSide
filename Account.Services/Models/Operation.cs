@@ -11,12 +11,8 @@ namespace Account.Services.Models
         public bool IsCredit { get; set; }
         public int Amount { get; set; }
         public int Balance { get; set; }
-        public Link Link { get; set; }
         public Guid TransactionId { get; set; }
-        public Guid FromAccountId { get; set; }//?
-        public Guid ToAccountId { get; set; }//?
         public DateTime OperationTime { get; set; }
-
     }
 
     public class Link

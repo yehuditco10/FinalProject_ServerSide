@@ -42,7 +42,7 @@ namespace Account.Handler
                 await context.Publish(transactionSucceeded).ConfigureAwait(false);
             }
             _log.Info("publish transactionCreated");
-            await context.Publish(transactionCreated).ConfigureAwait(false);
+           //await context.Publish(transactionCreated).ConfigureAwait(false);
         }
     }
 }

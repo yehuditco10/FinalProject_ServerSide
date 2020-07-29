@@ -19,10 +19,10 @@ namespace Account.Data
             CreateMap<Entities.Account, Services.Models.Account>();
             CreateMap<Services.Models.Account, Entities.Account>();
             CreateMap<QueryParameters, Services.Models.Pagination.QueryParameters>();
-            CreateMap<Entities.Operation, Services.Models.Operation>();
+            CreateMap<Services.Models.Operation,Entities.Operation >();
             CreateMap<Entities.Operation,Services.Models.Operation>();
             //?here
-            CreateMap<TransactionSucceeded, Services.Models.Operation>();
+            CreateMap<TransactionSucceeded, Services.Models.Transaction>();
 
         }
     }

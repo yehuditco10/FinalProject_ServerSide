@@ -11,10 +11,10 @@ namespace Account.Handler
     public class CreateOperationHandler : IHandleMessages<TransactionSucceeded>
     {
         static ILog _log = LogManager.GetLogger<CreateOperationHandler>();
-        private readonly IOperationHistoryService _operationHistoryService;
+        private readonly IOperationService _operationHistoryService;
         private readonly IMapper _mapper;
 
-        public CreateOperationHandler(IOperationHistoryService operationHistoryService,
+        public CreateOperationHandler(IOperationService operationHistoryService,
             IMapper mapper)
         {
             _operationHistoryService = operationHistoryService;
@@ -23,7 +23,7 @@ namespace Account.Handler
         public async Task Handle(TransactionSucceeded message, IMessageHandlerContext context)
         {
             _log.Info("in createOperation");
-            await _operationHistoryService.CreateOrerations(_mapper.Map<Operation>(message));
+            await _operationHistoryService.CreateOrerations(_mapper.Map<Transaction>(message));
         }
     }
 }
