@@ -13,8 +13,11 @@ namespace Account.Api.DTO
         //    _pageCount = maxPageCount;
         //}
         public Guid AccountId { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public string IsCredit { get; set; }
 
-       // private int maxPageCount = 50;
+        // private int maxPageCount = 50;
         public int Page { get; set; } = 1;
         private int _pageCount;
         public int PageCount

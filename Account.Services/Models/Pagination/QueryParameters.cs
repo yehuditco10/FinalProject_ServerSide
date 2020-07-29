@@ -11,6 +11,13 @@ namespace Account.Services.Models.Pagination
         public string Query { get; set; }
         public string OrderBy { get; set; }
         public Guid AccountId { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public string Type { get; set; }
+        public QueryParameters()
+        {
+            Query = "operationDate";
+        }
         public bool HasPrevious()
         {
             return (Page > 1);

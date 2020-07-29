@@ -1,8 +1,6 @@
 ﻿using Account.Services.Interfaces;
-using Account.Services.Models;
 using Account.Services.Models.Pagination;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,20 +16,18 @@ namespace Account.Data
         private readonly IMapper _mapper;
         //private readonly IUrlHelper _urlHelper;
 
-        public OperationRepository(AccountContext accountContext, IMapper mapper
-            //,IUrlHelper iURLHelper
-            )
+        public OperationRepository(AccountContext accountContext, IMapper mapper)
+        //,IUrlHelper iURLHelper   
         {
             _accountContext = accountContext;
             _mapper = mapper;
-           // _urlHelper = iURLHelper;
+            // _urlHelper = iURLHelper;
         }
         public int GetCountPerAccount(Guid accountId)
         {
             return _accountContext.Operations.Where(a => a.AccountId == accountId).Count();
         }
-
-        public List<Operation> GetOperationsOrdered(QueryParameters queryParameters)
+        public List<Services.Models.Operation> GetOperationsOrdered(QueryParameters queryParameters)
         {
             var totalCount = GetCountPerAccount(queryParameters.AccountId);
             IQueryable<Entities.Operation> _allItems;
@@ -41,25 +37,68 @@ namespace Account.Data
                 throw new Exception("no content");
             }
 
-                _allItems = GetAllItemsWithSortingAndFiltering(queryParameters);
-            if(_allItems.Count()==0)
-            { throw new Exception("no data found for this filtering"); }
-                //  var links = CreateLinksForCollection(queryParameters, totalCount);
-                var query = _allItems
-            .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
-                                .Take(queryParameters.PageCount);
-                return _mapper.Map<List<Services.Models.Operation>>(query);
+            _allItems = FilterResult(queryParameters);
+            if (_allItems.Count() == 0)
+            {
+                throw new Exception("no data found for this filtering");
             }
-        private IQueryable<Entities.Operation> GetAllItemsWithSortingAndFiltering(QueryParameters queryParameters)
-        {
-
-            var descending = queryParameters.IsDescending() == true ? "Desc" : "";
-           var _allItems = _accountContext.Operations.Where
-             (x => x.AccountId == queryParameters.AccountId)
-            .OrderBy(key => queryParameters.OrderBy);
-            return _allItems;
+            //  var links = CreateLinksForCollection(queryParameters, totalCount);
+            var query = _allItems
+                            .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
+                            .Take(queryParameters.PageCount);
+            return _mapper.Map<List<Services.Models.Operation>>(query);
         }
-    
+        private IQueryable<Entities.Operation> FilterResult(QueryParameters queryParameters)
+        {
+            IQueryable<Entities.Operation> res;
+            DateTime emptyDate = DateTime.MinValue;
+            res = _accountContext.Operations.Where(id => id.AccountId == queryParameters.AccountId)
+                .OrderBy(queryParameters.OrderBy, queryParameters.IsDescending());
+            if (queryParameters.FromDate != emptyDate && queryParameters.ToDate == emptyDate)
+            {
+                queryParameters.ToDate = DateTime.Now;
+            }
+            if (queryParameters.FromDate != emptyDate && !String.IsNullOrEmpty(queryParameters.Type))
+            {
+                res = FilterByDatesAndType(queryParameters);
+                else
+                res = ByTime(res, queryParameters);
+            }
+            if (!String.IsNullOrEmpty(queryParameters.Type))
+            {
+                res = IsCredit(res, queryParameters);
+            }
+            return res;
+        }
+        private IQueryable<Entities.Operation> IsCredit(IQueryable<Entities.Operation> list, QueryParameters queryParameters)
+        {
+            return list.Where(t => t.IsCredit == (queryParameters.Type == "credit"))
+        }
+        private IQueryable<Entities.Operation> ByTime(IQueryable<Entities.Operation> list, QueryParameters queryParameters)
+        {
+            return list.Where(t => t.OperationTime >= queryParameters.FromDate &&
+            t.OperationTime <= queryParameters.ToDate);                            
+        }
+        private IQueryable<Entities.Operation> FilterByDatesAndType(IQueryable<Entities.Operation> list,QueryParameters queryParameters)
+        {
+            return list.Where(t => t.IsCredit == (queryParameters.Type == "credit")&&
+            t.OperationTime >= queryParameters.FromDate &&
+            t.OperationTime <= queryParameters.ToDate);
+        }
+        public async Task CreateOperation(Services.Models.Operation operation)
+        {
+            Entities.Operation newOperation = _mapper.Map<Entities.Operation>(operation);
+            Entities.Account account = await _accountContext.Accounts.FirstOrDefaultAsync(a => a.Id == operation.AccountId);
+            newOperation.Id = Guid.NewGuid();
+            newOperation.Balance = account.Balance;
+            newOperation.OperationTime = DateTime.Now;
+            _accountContext.Add(newOperation);
+            await _accountContext.SaveChangesAsync();
+        }
+        //public void Add(Entities.Operation item)
+        //{
+        //    _accountContext.Operations.Add(item);
+        //}
         //private List<Link> CreateLinksForCollection(QueryParameters queryParameters, int totalCount)
         //{
         //    var links = new List<Link>
@@ -110,58 +149,6 @@ namespace Account.Data
         //    }
 
         //    return links;
-        //}
-        public void Add(Entities.Operation item)
-        {
-            _accountContext.Operations.Add(item);
-        }
-        public async Task CreateOperation(Operation operation)
-        {
-            Entities.Operation newOperation = _mapper.Map<Entities.Operation>(operation);
-            Entities.Account account = await _accountContext.Accounts.FirstOrDefaultAsync(a => a.Id == operation.AccountId);
-            newOperation.Id = Guid.NewGuid();
-            newOperation.Balance = account.Balance;
-            newOperation.OperationTime = DateTime.Now;
-             _accountContext.Add(newOperation);
-            await _accountContext.SaveChangesAsync();
-        }
-
-
-
-
-        public IQueryable<Entities.Operation> IsCredit(QueryParameters queryParameters, bool operationType)
-        {
-            return _accountContext.Operations.Where(t => t.IsCredit == operationType)
-                                .OrderBy(queryParameters.OrderBy, queryParameters.IsDescending());
-        }
-        public IQueryable<Entities.Operation> ByTime(QueryParameters queryParameters, DateTime fromDate, DateTime untilDate)
-        {
-            return _accountContext.Operations.Where(t => t.OperationTime >= fromDate && t.OperationTime <=untilDate)
-                                .OrderBy(queryParameters.OrderBy, queryParameters.IsDescending());
-        }
-        //public IQueryable<Operation> Filter(QueryParameters queryParameters, Filter filter)
-        //{
-        //    DateTime emptyDate = new DateTime();
-        //    if (filter.FromDate == emptyDate && filter.ToDate == emptyDate
-        //        && filter.OperationType != default)
-        //        return IsCredit(queryParameters, filter.OperationType);
-        //    if (filter.FromDate != emptyDate && filter.ToDate == emptyDate)
-        //        filter.ToDate = DateTime.Now;
-        //    else
-        //        return FilterByFromDate(queryParameters, filter.FromDate);
-        //}
-        //public List<Operation> GetFilteredInfoAsync(QueryParameters queryParameters, Filter filter)
-        //{
-        //    IQueryable<Operation> historyPage;
-        //    if (filter != null)
-        //        historyPage = Filter(queryParameters, filter);
-        //    else
-        //        return GetAll(queryParameters);
-        //    List<Operation> historyPage1 = historyPage
-        //        .Skip(queryParameters.PageCount * (queryParameters.Page - 1))
-        //        .Take(queryParameters.PageCount).ToList();
-        //    List<HistoryModel> history = _mapper.Map<List<HistoryModel>>(historyPage1);
-        //    return history;
         //}
     }
 }
