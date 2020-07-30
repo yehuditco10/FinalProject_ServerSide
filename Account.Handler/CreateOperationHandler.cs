@@ -1,7 +1,7 @@
 ﻿using Account.Services.Interfaces;
 using Account.Services.Models;
 using AutoMapper;
-using Messages.Events;
+using Messages.Commands;
 using NServiceBus;
 using NServiceBus.Logging;
 using System.Threading.Tasks;

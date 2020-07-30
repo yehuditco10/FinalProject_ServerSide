@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Account.Api.DTO;
 using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Cors;

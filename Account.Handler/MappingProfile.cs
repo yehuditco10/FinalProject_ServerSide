@@ -1,10 +1,5 @@
-﻿using Account.Api.DTO;
-using Account.Services.Models;
-using AutoMapper;
-using Messages.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AutoMapper;
+using Messages.Commands;
 
 namespace Account.Handler
 {

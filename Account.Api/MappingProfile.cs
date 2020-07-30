@@ -1,11 +1,7 @@
 ﻿using Account.Api.DTO;
 using Account.Services.Models;
 using AutoMapper;
-using Messages.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
+using Messages.Commands;
 namespace Account.Data
 {
     public class MappingProfile : Profile
@@ -25,7 +21,7 @@ namespace Account.Data
             CreateMap<Entities.Operation,Services.Models.Operation>();
             //?here
             CreateMap<TransactionSucceeded, Services.Models.Transaction>();
-            CreateMap<EmailVerification, Services.Models.EmailVerification>();
+            CreateMap<Api.DTO.EmailVerification, Services.Models.EmailVerification>();
             CreateMap<Services.Models.EmailVerification, Entities.EmailVerification>();
             CreateMap<Entities.EmailVerification, Services.Models.EmailVerification>();
 
