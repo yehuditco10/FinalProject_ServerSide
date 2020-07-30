@@ -31,6 +31,8 @@ namespace Account.Api
             services.AddScoped<ITransferenceRepository, TransferenceRepository>();
             services.AddScoped<IOperationService, OperationService>();
             services.AddScoped<IOperationRepository, OperationRepository>();
+            services.AddScoped<IVerificationService, VerificationService>();
+            services.AddScoped<IVerificationRepository, VerificationRepository>();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {

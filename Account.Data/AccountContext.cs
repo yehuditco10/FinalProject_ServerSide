@@ -9,6 +9,7 @@ namespace Account.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Entities.Account> Accounts { get; set; }
         public DbSet<Operation> Operations { get; set; }
+        public DbSet<EmailVerification> EmailVerificationS { get; set; }
         public AccountContext(DbContextOptions<AccountContext> options)
   : base(options)
         { }
@@ -24,7 +25,8 @@ namespace Account.Data
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Entities.Account>().ToTable("Account");
-            modelBuilder.Entity<Operation>().ToTable("Operation");
+            modelBuilder.Entity<Operation>().ToTable("Operation"); 
+            modelBuilder.Entity<EmailVerification>().ToTable("EmailVerification");
             //Customer
             modelBuilder.Entity<Customer>()
                                .Property(customer => customer.Id);
@@ -58,7 +60,20 @@ namespace Account.Data
             //Operation
             modelBuilder.Entity<Operation>()
                                .Property(operation => operation.Id);
-            
+            //EmailVerification
+            modelBuilder.Entity<EmailVerification>()
+                            .Property(emailVerification => emailVerification.Id);
+            modelBuilder.Entity<EmailVerification>()
+                  .HasIndex(emailVerification => emailVerification.Email)
+                  .IsUnique();
+            modelBuilder.Entity<EmailVerification>()
+           .Property(emailVerification => emailVerification.VerificationCode)
+       .IsRequired(); ;
+            modelBuilder.Entity<EmailVerification>()
+                  .Property(emailVerification => emailVerification.ExpirationTime)
+                  .HasDefaultValueSql("getdate()")
+                  .IsRequired();
+
         }
     }
 }
