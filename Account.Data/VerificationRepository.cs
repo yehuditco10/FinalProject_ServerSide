@@ -4,6 +4,7 @@ using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Configuration;
 using System.Threading.Tasks;
 
 namespace Account.Data
@@ -19,99 +20,57 @@ namespace Account.Data
             _accountContext = accountContext;
             _mapper = mapper;
         }
-        public async Task<Services.Models.EmailVerification> CreateEmailVerificationAsync(Services.Models.EmailVerification emailVerificationModel)
+        public async Task<int> CreateEmailVerificationAsync(Services.Models.EmailVerification emailVerificationModel)
         {
-            try
-            {
                 Entities.EmailVerification emailVerification = _mapper.Map<Entities.EmailVerification>(emailVerificationModel);
-                await _accountContext.EmailVerificationS.AddAsync(emailVerification);
-                await _accountContext.SaveChangesAsync();
-                return _mapper.Map<Services.Models.EmailVerification>(emailVerification);
-            }
-            catch (Exception e)
-            {
-                throw new EmailVerificationException(e.Message);
-            }
+                _accountContext.EmailVerificationS.Add(emailVerification);
+                return await _accountContext.SaveChangesAsync();                          
         }
         public async Task<bool> VerifyEmail(Services.Models.EmailVerification verification)
         {
-            try
-            {
-                var emailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(c => c.Email == verification.Email);
+            var emailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(c => c.Email == verification.Email);
                 if (emailVerification == null)
-                {
                     throw new EmailVerificationException("Email not found");
-                }
                 if (emailVerification.VerificationCode != verification.VerificationCode)
                     throw new EmailVerificationException("The verification code is wrong");
                 if (emailVerification.ExpirationTime < DateTime.Now)
-                    throw new EmailVerificationException("The expiration date has expired");
-                var active = await ActivateAccount(verification.Email);
-                if (active == -1)
-                    throw new EmailVerificationException("Activate account failed");
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw new EmailVerificationException(e.Message);
-            }
+                    throw new EmailVerificationException("The expiration time has expired");
+                return true;  
         }
-
-        //put it here or in accountService?
-        private async Task<int> ActivateAccount(string email)
-        {
-            try
-            {
-                var account = await _accountContext.Customers.FirstOrDefaultAsync(a => a.Email == email);
-                if (account == null)
-                    throw new AccountNotFoundException($"There is no accountt for {email}");
-                account.Active = true;
-                return await _accountContext.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                //whice type?
-                throw new Exception(e.Message);
-            }
-        }
-
+        ////put it here or in accountService?
+        //private async Task<int> ActivateAccount(string email)
+        //{
+        //    try
+        //    {
+        //        var account = await _accountContext.Customers.FirstOrDefaultAsync(a => a.Email == email);
+        //        if (account == null)
+        //            throw new AccountNotFoundException($"There is no accountt for {email}");
+        //        account.Active = true;
+        //        return await _accountContext.SaveChangesAsync();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        //whice type?
+        //        throw new Exception(e.Message);
+        //    }
+        //}
         public async Task<Services.Models.EmailVerification> GetVerificationDetails(string email)
         {
-            try
-            {
-                Entities.EmailVerification emailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(
+           Entities.EmailVerification emailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(
                               e => e.Email == email);
                 if (emailVerification == null)
                     throw new AccountNotFoundException("we didn't find this email");//which exception
                 return _mapper.Map<Services.Models.EmailVerification>(emailVerification);
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-
         }
-
-        public async Task<bool> UpdateVerificationCodeAsync(string email, int verificationCode)
+        public async Task<bool> UpdateVerificationCodeAsync(Services.Models.EmailVerification emailVerification)
         {
-            try
-            {
-                EmailVerification emailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(
-                               e => e.Email == email);
+            EmailVerification oldEmailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(
+                               e => e.Email == emailVerification.Email);
                 if (emailVerification == null)
                     throw new AccountNotFoundException("we didn't find this email");//which exception
-                emailVerification.VerificationCode = verificationCode;
-                //take the minutes number fron config file
-                emailVerification.ExpirationTime = DateTime.Now.AddMinutes(60);
-                await _accountContext.SaveChangesAsync();
-                //?? how to return(to ask?)
-                return true;
-            }
-            catch (Exception)
-            {
-                //todo
-                throw new EmailVerificationException("..");
-            }
+                oldEmailVerification.VerificationCode = emailVerification.VerificationCode;
+                oldEmailVerification.ExpirationTime = emailVerification.ExpirationTime;
+               return await _accountContext.SaveChangesAsync()>0;                
         }
     }
 }

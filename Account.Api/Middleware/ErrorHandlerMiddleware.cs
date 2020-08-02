@@ -40,7 +40,7 @@ namespace Account.Api.Middleware
                 code = HttpStatusCode.NotFound;
             // whice status code?
             else if (ex is EmailVerificationException)
-                code = HttpStatusCode.NotFound;
+                code = HttpStatusCode.Unauthorized;
 
             context.Response.StatusCode = (int)code;
             return context.Response.WriteAsync(result);

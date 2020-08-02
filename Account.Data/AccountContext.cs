@@ -41,8 +41,6 @@ namespace Account.Data
               .Property(customer => customer.PasswordHash);
             modelBuilder.Entity<Customer>()
               .Property(customer => customer.PasswordSalt);
-            modelBuilder.Entity<Customer>()
-              .Property(customer => customer.Active);
             //Account
             modelBuilder.Entity<Entities.Account>()
                 .Property(account => account.Id)

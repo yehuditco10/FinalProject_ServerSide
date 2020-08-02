@@ -21,7 +21,6 @@ namespace Account.Data
             CreateMap<Entities.Operation,Services.Models.Operation>();
             //?here
             CreateMap<TransactionSucceeded, Services.Models.Transaction>();
-            CreateMap<Api.DTO.EmailVerification, Services.Models.EmailVerification>();
             CreateMap<Services.Models.EmailVerification, Entities.EmailVerification>();
             CreateMap<Entities.EmailVerification, Services.Models.EmailVerification>();
 

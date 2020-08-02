@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Transaction.Data.Exceptions;
@@ -34,7 +32,9 @@ namespace Transaction.Api.Middleware
             string result = JsonConvert.SerializeObject(new { error = ex.Message });
 
             if (ex is UpdateStatusFailedException || ex is AddToDBFailedExeption)
+            {
                 code = HttpStatusCode.InternalServerError;
+            }
             //if (ex is LoginFailedException)
             //    code = HttpStatusCode.Unauthorized;
             //else if (ex is AccountNotFoundException)

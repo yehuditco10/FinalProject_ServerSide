@@ -91,7 +91,7 @@ namespace Account.Data
             newOperation.Id = Guid.NewGuid();
             newOperation.Balance = account.Balance;
             newOperation.OperationTime = DateTime.Now;
-            _accountContext.Add(newOperation);
+            _accountContext.Operations.Add(newOperation);
             await _accountContext.SaveChangesAsync();
         }
 

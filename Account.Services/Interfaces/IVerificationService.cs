@@ -9,7 +9,7 @@ namespace Account.Services.Interfaces
    public interface IVerificationService
     {
         Task<bool> VerifyEmail(EmailVerification verificationModel);
-        Task SendVerificationCodeAsync(EmailVerification emailVerification);
+        Task SendVerificationCodeAsync(string email);
         Task ReSendVerificationCodeAsync(string email);
     }
 }

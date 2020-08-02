@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Account.Api.DTO;
 using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Account.Api.Controllers
@@ -14,30 +10,29 @@ namespace Account.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("MyPolicy")]
-    public class EmailController : ControllerBase
+    public class VerificationController : ControllerBase
     {
-        private readonly IAccountService _accountService;
         private readonly IVerificationService _verificationService;
         private readonly IMapper _mapper;
-        public EmailController(IAccountService accountService,
-            IVerificationService verificationService,
+        public VerificationController(IVerificationService verificationService,
                IMapper mapper)
         {
-            _accountService = accountService;
             _verificationService = verificationService;
             _mapper = mapper;
         }
-        [HttpPost("resend/{email}")]
+        [HttpGet("resend")]
         public async Task<ActionResult> ReSendVerificationCodeAsync(string email)
         {
             await _verificationService.ReSendVerificationCodeAsync(email);
             return Ok();
         }
-        [HttpPost("verification")]
-        public async Task<ActionResult<bool>> EmailVerificationAsync(EmailVerification verification)
+        [HttpGet("verification")]
+        public async Task<ActionResult<bool>> GenerateEmailVerificationAsync(string email)
         {
-            var verificationModel = _mapper.Map<Services.Models.EmailVerification>(verification);
-            return await _verificationService.VerifyEmail(verificationModel);
+            if (String.IsNullOrEmpty(email) || !(email.Contains("@")))
+                return BadRequest("not valid email address");
+            await _verificationService.SendVerificationCodeAsync(email);
+            return Ok();
         }
     }
 }

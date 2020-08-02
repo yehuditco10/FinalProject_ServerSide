@@ -20,22 +20,14 @@ namespace Transaction.Data
         }
         public async Task<int> UpdateStatus(Guid transactionId, eStatus status)
         {
-            try
+            Entities.Transaction transaction = await _transactionContext.Transactions
+                            .FirstOrDefaultAsync(m => m.Id == transactionId);
+            if (transaction != null)
             {
-                Entities.Transaction transaction = await _transactionContext.Transactions
-                                .FirstOrDefaultAsync(m => m.Id == transactionId);
-                if (transaction != null)
-                {
-                    transaction.Status = status;
-                    return await _transactionContext.SaveChangesAsync();
-                }
-                throw new TransactionNotFoundExeption("This transaction id not found");
+                transaction.Status = status;
+                return await _transactionContext.SaveChangesAsync();
             }
-            catch (Exception e)
-            {
-                throw new AddToDBFailedExeption(e.Message);
-            }
-
+            throw new TransactionNotFoundExeption("This transaction id not found");
         }
         public async Task<bool> AddTransactionToDB(Services.Models.Transaction transaction)
         {
@@ -45,26 +37,19 @@ namespace Transaction.Data
 
         public async Task UpdateStatus(TransactionStatus transactionStatus)
         {
-            try
+            var transaction = await _transactionContext.Transactions.FirstOrDefaultAsync(
+                t => t.Id == transactionStatus.TransactionId);
+            if (transaction == null)
             {
-                var transaction = await _transactionContext.Transactions.FirstOrDefaultAsync(
-                    t => t.Id == transactionStatus.TransactionId);
-                if (transaction == null)
-                {
-                    throw new TransactionNotFoundExeption("TransactionId is not valid");
-                }
-                if (transactionStatus.isSucceeded == false)
-                {
-                    transaction.Status = eStatus.failed;
-                    transaction.FailureReason = transactionStatus.FailureReason;
-                }
-                else
-                    transaction.Status = eStatus.successed;
+                throw new TransactionNotFoundExeption("TransactionId is not valid");
             }
-            catch (Exception e)
+            if (transactionStatus.isSucceeded == false)
             {
-                throw new UpdateStatusFailedException(e.Message);
+                transaction.Status = eStatus.failed;
+                transaction.FailureReason = transactionStatus.FailureReason;
             }
+            else
+                transaction.Status = eStatus.successed;
         }
     }
 }

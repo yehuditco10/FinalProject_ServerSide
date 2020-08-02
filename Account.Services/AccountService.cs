@@ -9,10 +9,13 @@ namespace Account.Services
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
-        
-        public AccountService(IAccountRepository accountRepository)
+        private readonly IVerificationService _verificationService;
+
+        public AccountService(IAccountRepository accountRepository,
+            IVerificationService verificationService)
         {
             _accountRepository = accountRepository;
+            _verificationService = verificationService;
         }
         public async Task<bool> CreateAsync(Customer customer)
         {
@@ -28,11 +31,7 @@ namespace Account.Services
             }
             return false;
         }
-        public int GenerateRandomNo(int min, int max)
-        {
-            Random _rdm = new Random();
-            return _rdm.Next(min, max);
-        }
+        
         public async Task<Models.Account> GetAccountAsync(Guid accountId)
         {
             return await _accountRepository.GetAccountAsync(accountId);

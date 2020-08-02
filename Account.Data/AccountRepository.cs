@@ -20,9 +20,7 @@ namespace Account.Data
         }
         public async Task<bool> CreateAccountAsync(Services.Models.Customer customerModel)
         {
-            try
-            {
-                Entities.Customer newCustomer = _mapper.Map<Entities.Customer>(customerModel);
+            Entities.Customer newCustomer = _mapper.Map<Entities.Customer>(customerModel);
                 newCustomer.Id = Guid.NewGuid();
                 newCustomer.Active = false;
                 _accountContext.Customers.Add(newCustomer);
@@ -36,14 +34,8 @@ namespace Account.Data
                 _accountContext.Accounts.Add(account);
                 await _accountContext.SaveChangesAsync();
                 return true;
-            }
-            catch (Exception e)
-            {
-                throw new CreateAccountFailed($"Account creation for { customerModel.Email } failed",e.InnerException);
-            }
         }
 
-       
         public async Task<bool> IsEmailExistsAsync(string email)
         {
             Entities.Customer customer = await _accountContext.Customers.FirstOrDefaultAsync(
@@ -56,24 +48,14 @@ namespace Account.Data
         }
         public async Task<Services.Models.Customer> GetCustomerAsync(string email)
         {
-            try
-            {
-
-                Entities.Customer customer = await _accountContext.Customers
+            Entities.Customer customer = await _accountContext.Customers
                   .FirstOrDefaultAsync(c => c.Email == email);
                 if (customer == null)
                     throw new AccountNotFoundException("Your email is not exist");
-                return _mapper.Map<Services.Models.Customer>(customer);
-            }
-            catch (Exception e)
-            {
-                throw new AccountNotFoundException(e.Message);
-            }
+                return _mapper.Map<Services.Models.Customer>(customer);      
         }
         public async Task<Services.Models.Account> GetAccountAsync(Guid accountId)
         {
-            try
-            {
                 var account = await _accountContext.Accounts
                    .Include(c => c.Customer)
                      .FirstOrDefaultAsync(a => a.Id == accountId);
@@ -82,17 +64,10 @@ namespace Account.Data
                     return _mapper.Map<Services.Models.Account>(account);
                 }
                 throw new AccountNotFoundException($"There is no account with id {accountId}");
-            }
-            catch (Exception e)
-            {
-                throw new AccountNotFoundException(e.Message);
-            }
         }
         public async Task<Guid> GetAccountIdByCustomerIdAsync(Guid customerId)
         {
-            try
-            {
-                var account = await _accountContext.Accounts
+            var account = await _accountContext.Accounts
                    .FirstOrDefaultAsync(a => a.CustomerId == customerId);
                 if (account != null)
                 {
@@ -100,10 +75,6 @@ namespace Account.Data
                 }
                 throw new AccountNotFoundException($"There is no account for customer {customerId}");
             }
-            catch (Exception e)
-            {
-                throw new AccountNotFoundException(e.Message);
-            }
-        }
     }
 }
+
