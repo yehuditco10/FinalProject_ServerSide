@@ -19,7 +19,7 @@ C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\bin\Debug\n
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.csprojAssemblyReference.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.AssemblyInfoInputs.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.AssemblyInfo.cs
-C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.csproj.CoreCompileInputs.cache
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.csproj.CopyComplete
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.dll
 C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.pdb
+C:\Users\bhartman\Documents\FinalProject_ServerSide\Account.Services\obj\Debug\netstandard2.0\Account.Services.csproj.CoreCompileInputs.cache

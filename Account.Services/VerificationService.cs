@@ -1,5 +1,6 @@
 ﻿using Account.Services.Interfaces;
 using Account.Services.Models;
+//using Microsoft.Extensions.Configuration;
 using System;
 using System.Configuration;
 using System.Net.Mail;
@@ -11,9 +12,9 @@ namespace Account.Services
     {
         private readonly IVerificationRepository _verificationRepository;
         public VerificationService(
+            //IConfigurationRoot  configurationRoot,
             IVerificationRepository verificationRepository)
         {
-            //_accountService = accountService;
             _verificationRepository = verificationRepository;
         }
         public async void SaveVerificationcode(EmailVerification emailVerification)

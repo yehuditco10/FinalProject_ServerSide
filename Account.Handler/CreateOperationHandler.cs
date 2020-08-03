@@ -10,7 +10,7 @@ namespace Account.Handler
 {
     public class CreateOperationHandler : IHandleMessages<TransactionSucceeded>
     {
-        static ILog _log = LogManager.GetLogger<CreateOperationHandler>();
+        static readonly ILog _log = LogManager.GetLogger<CreateOperationHandler>();
         private readonly IOperationService _operationHistoryService;
         private readonly IMapper _mapper;
 

@@ -19,6 +19,11 @@ namespace Transaction.Api.Controllers
             _mapper = mapper;
             _transactionService = transactionService;
         }
+        [HttpGet]
+        public async ActionResult<Transaction.Api.DTO.Transaction> GetTransactionDetailes(Guid transactionId)
+        {
+           return _transactionService.GetTransactionDetailes(transactionId);
+        }
 
         [HttpPost]
         public async Task<ActionResult<bool>> DoTransaction(DTO.Transaction transaction)

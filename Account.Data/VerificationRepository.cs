@@ -4,7 +4,6 @@ using Account.Services.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Configuration;
 using System.Threading.Tasks;
 
 namespace Account.Data
@@ -37,23 +36,6 @@ namespace Account.Data
                     throw new EmailVerificationException("The expiration time has expired");
                 return true;  
         }
-        ////put it here or in accountService?
-        //private async Task<int> ActivateAccount(string email)
-        //{
-        //    try
-        //    {
-        //        var account = await _accountContext.Customers.FirstOrDefaultAsync(a => a.Email == email);
-        //        if (account == null)
-        //            throw new AccountNotFoundException($"There is no accountt for {email}");
-        //        account.Active = true;
-        //        return await _accountContext.SaveChangesAsync();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        //whice type?
-        //        throw new Exception(e.Message);
-        //    }
-        //}
         public async Task<Services.Models.EmailVerification> GetVerificationDetails(string email)
         {
            Entities.EmailVerification emailVerification = await _accountContext.EmailVerificationS.FirstOrDefaultAsync(

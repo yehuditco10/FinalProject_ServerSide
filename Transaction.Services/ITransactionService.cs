@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Transaction.Services.Models;
 
 namespace Transaction.Services
@@ -7,5 +8,6 @@ namespace Transaction.Services
     {
        Task<bool> DoTransactionAsync(Models.Transaction transaction);
         Task UpdateStatus(TransactionStatus transactionStatus);
+        Task<Models.Transaction> GetTransactionDetailes(Guid transactionId);
     }
 }

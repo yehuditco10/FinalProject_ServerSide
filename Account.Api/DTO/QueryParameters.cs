@@ -26,6 +26,6 @@ namespace Account.Api.DTO
             set { _pageCount = (value > 50) ? 50 : value; }
         }
         public string Query { get; set; }
-        public string OrderBy { get; set; } = "id";
+        public string OrderBy { get; set; }
     }
 }

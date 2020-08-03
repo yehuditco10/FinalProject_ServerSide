@@ -2309,6 +2309,7 @@
         "dependencies": {
           "Messages": "1.0.0",
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "3.1.6",
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.6",
           "NServiceBus": "7.3.0",
           "System.ComponentModel.Annotations": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
