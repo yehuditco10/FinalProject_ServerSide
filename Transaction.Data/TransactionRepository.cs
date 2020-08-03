@@ -50,6 +50,13 @@ namespace Transaction.Data
             }
             else
                 transaction.Status = eStatus.successed;
+           await _transactionContext.SaveChangesAsync();
+        }
+
+        public async Task<Services.Models.Transaction> GetTransactionDetailes(Guid transactionId)
+        {
+            var result = await _transactionContext.Transactions.FirstAsync(t => t.Id == transactionId);
+            return _mapper.Map<Services.Models.Transaction>(result);
         }
     }
 }

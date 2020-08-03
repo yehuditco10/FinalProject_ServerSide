@@ -17,17 +17,17 @@ namespace Account.Services
         {
             _verificationRepository = verificationRepository;
         }
-        public async void SaveVerificationcode(EmailVerification emailVerification)
-        {           
+        public async Task SaveVerificationcode(EmailVerification emailVerification)
+        {
             await _verificationRepository.CreateEmailVerificationAsync(emailVerification);
         }
         private async Task SendEmailWithVerificationCodeAsync(EmailVerification emailVerification)
         {
-            
+
             string subject = "Verification Code - Brix ";
             //string subject = ConfigurationManager.AppSettings["VerificationEmailSubject"]; 
-             string body = $"Hello {emailVerification.Email}" +
-                $" your verify number is {emailVerification.VerificationCode} 'http://localhost:4200/verification' - our site";
+            string body = $"Hello {emailVerification.Email}"+
+               $" your verify number is {emailVerification.VerificationCode}";
             // body += @"Hello " + email + "</br>  your verify number is " + emailVerification.VerificationCode + "</br><a href='http://localhost:4200/verification'>our site</a>";
             //string htmlText = @"
             //        <head> 
@@ -39,7 +39,6 @@ namespace Account.Services
             //        <body>";
             //htmlText += "<h1> hello " + emailVerification.Email + "  </h1>" +
             //    "<p>" + " your verify number is " + emailVerification.VerificationCode + " </p>" +
-            //    " </ br >< a href = 'http://localhost:4200/verification' > our site </ a > " +
             //    "</body>";
 
             await SendEmail(emailVerification.Email, subject, body);
@@ -58,6 +57,7 @@ namespace Account.Services
                 mail.To.Add(toEmail);
                 mail.Subject = subject;
                 mail.Body = body;
+                //SmtpServer.Port = ConfigurationManager.AppSettings["PortNumber"];
                 SmtpServer.Port = 25;
                 SmtpServer.Credentials = new System.Net.NetworkCredential(fromMail, fromPassword);
                 SmtpServer.EnableSsl = true;
@@ -78,21 +78,24 @@ namespace Account.Services
         {
             return await _verificationRepository.VerifyEmail(verification);
         }
-        // return ?
         public async Task ReSendVerificationCodeAsync(string email)
         {
             var minutes = ConfigurationManager.GetSection("someMinutesForVerificationEmail");
-            if (minutes == null) minutes = 5;
+            if (minutes == null)
+            {
+                minutes = 5;
+            }
+
             EmailVerification emailVerification = new EmailVerification()
             {
                 Email = email,
                 ExpirationTime = DateTime.Now.AddMinutes(Convert.ToDouble(minutes)),
-                VerificationCode = GenerateRandomNomber(1000,9999)
+                VerificationCode = GenerateRandomNomber(1000, 9999)
             };
             await _verificationRepository.UpdateVerificationCodeAsync(emailVerification);
-            await SendEmailWithVerificationCodeAsync(emailVerification);  
+            await SendEmailWithVerificationCodeAsync(emailVerification);
         }
-        public async Task  SendVerificationCodeAsync(string email)
+        public async Task SendVerificationCodeAsync(string email)
         {
             EmailVerification emailVerification = new EmailVerification()
             {
@@ -100,8 +103,8 @@ namespace Account.Services
                 ExpirationTime = DateTime.Now.AddMinutes(5),
                 VerificationCode = GenerateRandomNomber(1000, 9999)
             };
-            SaveVerificationcode(emailVerification);
-          await SendEmailWithVerificationCodeAsync(emailVerification);
+            await SaveVerificationcode(emailVerification);
+            await SendEmailWithVerificationCodeAsync(emailVerification);
         }
     }
 }

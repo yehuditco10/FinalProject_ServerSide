@@ -8,6 +8,6 @@ namespace Transaction.Services
     {
        Task<bool> DoTransactionAsync(Models.Transaction transaction);
         Task UpdateStatus(TransactionStatus transactionStatus);
-        Task<Models.Transaction> GetTransactionDetailes(Guid transactionId);
+        Task<Models.Transaction> GetTransactionDetailesAsync(Guid transactionId);
     }
 }

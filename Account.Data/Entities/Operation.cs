@@ -14,5 +14,5 @@ namespace Account.Data.Entities
         public int Amount { get; set; }
         public int Balance { get; set; }
         public DateTime OperationTime { get; set; }
-    }
+   }
 }

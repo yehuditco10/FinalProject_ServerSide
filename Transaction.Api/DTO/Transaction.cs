@@ -11,5 +11,6 @@ namespace Transaction.Api.DTO
         public Guid ToAccountId { get; set; }
         [Required]
         public int Amount { get; set; }
+        public DateTime Date { get; set; }
     }
 }

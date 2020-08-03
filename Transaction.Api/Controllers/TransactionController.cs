@@ -20,9 +20,10 @@ namespace Transaction.Api.Controllers
             _transactionService = transactionService;
         }
         [HttpGet]
-        public async ActionResult<Transaction.Api.DTO.Transaction> GetTransactionDetailes(Guid transactionId)
+        public async Task<DTO.Transaction> GetTransactionDetailes(Guid transactionId)
         {
-           return _transactionService.GetTransactionDetailes(transactionId);
+            var res=await _transactionService.GetTransactionDetailesAsync(transactionId);
+            return _mapper.Map<DTO.Transaction>(res);
         }
 
         [HttpPost]

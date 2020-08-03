@@ -39,7 +39,6 @@ namespace Transaction.Services
 
         private async Task<bool> AddTransactionToDB(Models.Transaction transaction)
         {
-            
             return await _transactionRepository.AddTransactionToDB(transaction);
         }
         private void SendDoTransactionMessage(Models.Transaction transaction)
@@ -52,6 +51,11 @@ namespace Transaction.Services
                 TransactionId = transaction.Id
             };
              _messageSession.Send(doTransaction).ConfigureAwait(false);
+        }
+
+        public async Task<Models.Transaction> GetTransactionDetailesAsync(Guid transactionId)
+        {
+            return await _transactionRepository.GetTransactionDetailes(transactionId);
         }
     }
 }

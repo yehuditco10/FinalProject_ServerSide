@@ -9,7 +9,9 @@ namespace Transaction.Api
         public MappingProfile()
         {
             CreateMap<DTO.Transaction, Services.Models.Transaction>();
+            CreateMap<Services.Models.Transaction,DTO.Transaction>();
             CreateMap<Services.Models.Transaction, Data.Entities.Transaction>();
+            CreateMap<Data.Entities.Transaction,Services.Models.Transaction>();
             CreateMap<TransactionCreated, TransactionStatus>();
         }
     }

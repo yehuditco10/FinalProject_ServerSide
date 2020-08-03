@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Account.Handler
 {
     class CreateTransactionHandler : IHandleMessages<CreateTransaction>
-
     {
         private readonly ITransferenceService _transferenceService;
         static readonly ILog _log = LogManager.GetLogger<CreateTransactionHandler>();

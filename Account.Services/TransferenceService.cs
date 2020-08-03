@@ -24,7 +24,7 @@ namespace Account.Services
                     await DoTransaction(transaction);
                 }
             }
-            return  new TransactionCreated()
+            return new TransactionCreated()
             {
                 TransactionId = transaction.TransactionId,
                 IsSucceeded = transactionCorrectness.IsValid,
