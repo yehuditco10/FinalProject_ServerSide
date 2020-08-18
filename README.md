@@ -12,10 +12,10 @@ How to get start?
 * Open the Project folder in VS
 * Run it, and use by the Swagger UI page
   The Swagger Links are:  
-   Loans Service 
+   #####Loans Service 
     -  [https://localhost:44389/index.html](https://localhost:44389/index.html)
     -  [https://localhost:44389/swagger/LoansApiSpecification/swagger.json](https://localhost:44389/swagger/LoansApiSpecification/swagger.json)
-   Rules Service 
+   #####Rules Service 
     -  [https://localhost:44359/index.html](https://localhost:44359/index.html)
     -  [https://localhost:44359/swagger/RulesApiSpecification/swagger.json](https://localhost:44359/swagger/RulesApiSpecification/swagger.json)
 * In order to add or update loan rules, upload (via the swagger) an excel file.
